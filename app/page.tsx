@@ -183,21 +183,179 @@ export default function Home() {
 
 </section>
 
-      {/* SERVICES */}
-      <section className="py-24 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl mb-12">{current.services}</h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {[{icon:<ImageIcon/>,name:"Photo Editing"},
-            {icon:<Palette/>,name:"Design"},
-            {icon:<Video/>,name:"Video Editing"}].map((item,i)=>(
-            <div key={i} className="p-6 rounded-2xl bg-white/10 backdrop-blur border border-white/20 hover:scale-105 transition shadow-lg hover:shadow-purple-500/30">
-              <div className="mb-4">{item.icon}</div>
-              <h3>{item.name}</h3>
-            </div>
-          ))}
+
+<section className="py-32 px-6 max-w-6xl mx-auto">
+
+  <div className="grid md:grid-cols-2 gap-16 items-center">
+
+    {/* IMAGE SIDE */}
+    <motion.div
+      initial={{ opacity: 0, x: -80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative group"
+    >
+
+      {/* GLOW */}
+      <div className="absolute inset-0 bg-purple-500/20 blur-[100px] rounded-2xl opacity-70 group-hover:opacity-100 transition" />
+
+      {/* IMAGE */}
+      <img
+        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+        className="relative rounded-2xl object-cover w-full h-[420px] shadow-xl"
+      />
+
+      {/* FLOATING BADGE */}
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="absolute -bottom-6 -right-6 bg-black/80 backdrop-blur px-6 py-3 rounded-xl border border-white/10 text-sm"
+      >
+        3+ Years Experience
+      </motion.div>
+
+    </motion.div>
+
+    {/* TEXT SIDE */}
+    <motion.div
+      initial={{ opacity: 0, x: 80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+
+      {/* LABEL */}
+      <p className="text-xs tracking-widest text-purple-400 mb-3">
+        ABOUT ME
+      </p>
+
+      {/* TITLE */}
+      <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        Crafting Visuals That <br />
+        <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Capture Attention
+        </span>
+      </h2>
+
+      {/* DESC */}
+      <p className="text-gray-400 leading-relaxed mb-4">
+        I’m Suciana, a creative image editor and visual designer who specializes in transforming ordinary visuals into powerful, scroll-stopping content.
+      </p>
+
+      <p className="text-gray-500 leading-relaxed mb-8">
+        I help brands stand out visually, communicate clearly, and leave a lasting impression through high-quality design.
+      </p>
+
+      {/* SKILLS */}
+      <div className="flex flex-wrap gap-3 mb-8">
+        {["Photoshop", "Canva", "CapCut", "CorelDraw"].map((skill, i) => (
+          <span
+            key={i}
+            className="px-4 py-2 text-sm rounded-full bg-white/10 border border-white/10 hover:bg-purple-500/20 transition"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+
+      {/* STATS */}
+      <div className="flex gap-10">
+
+        {[
+          { num: "50+", label: "Projects" },
+          { num: "30+", label: "Clients" },
+          { num: "3+", label: "Years" }
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 }}
+          >
+            <p className="text-2xl font-bold">{item.num}</p>
+            <p className="text-gray-500 text-sm">{item.label}</p>
+          </motion.div>
+        ))}
+
+      </div>
+
+    </motion.div>
+
+  </div>
+
+</section>
+
+<section className="py-32 px-6 max-w-6xl mx-auto">
+
+  {/* TITLE */}
+  <div className="text-center mb-16">
+    <p className="text-xs tracking-widest text-purple-400 mb-3">
+      SERVICES
+    </p>
+
+    <h2 className="text-3xl md:text-5xl font-bold">
+      What I Can Do For You
+    </h2>
+
+    <p className="text-gray-400 mt-4">
+      Helping you turn ideas into impactful visual content.
+    </p>
+  </div>
+
+  {/* CARDS */}
+  <div className="grid md:grid-cols-3 gap-8">
+
+    {[
+      {
+        icon: <ImageIcon size={28} />,
+        title: "Photo Editing",
+        desc: "Enhancing images with professional retouching, color grading, and detail refinement."
+      },
+      {
+        icon: <Palette size={28} />,
+        title: "Design",
+        desc: "Creating engaging visuals for social media, branding, and promotional content."
+      },
+      {
+        icon: <Video size={28} />,
+        title: "Video Editing",
+        desc: "Producing dynamic short-form videos for reels, TikTok, and digital campaigns."
+      }
+    ].map((item, i) => (
+
+      <div
+        key={i}
+        className="group relative p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 overflow-hidden transition duration-500 hover:scale-105"
+      >
+
+        {/* GLOW HOVER */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-purple-500/10 blur-2xl" />
+
+        {/* ICON */}
+        <div className="mb-6 text-purple-400 group-hover:scale-110 transition">
+          {item.icon}
         </div>
-      </section>
+
+        {/* TITLE */}
+        <h3 className="text-xl font-semibold mb-3">
+          {item.title}
+        </h3>
+
+        {/* DESC */}
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {item.desc}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+      
 
       {/* PORTFOLIO */}
       <section id="portfolio" className="py-24 px-6 max-w-6xl mx-auto">
@@ -219,20 +377,103 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-24 text-center">
-        <h2 className="text-3xl mb-4">{current.contact}</h2>
+      <section className="py-24 px-6 max-w-5xl mx-auto text-center">
 
-        <div className="flex justify-center gap-6 text-2xl mb-6">
-          <FaInstagram />
-          <FaLinkedin />
-          <FaTiktok />
-        </div>
+  <h2 className="text-3xl md:text-4xl font-bold mb-12">
+    Before & After
+  </h2>
 
-        <a href="https://wa.me/6281997837794" className="bg-green-500 px-8 py-3 rounded-xl">
-          {current.chat}
-        </a>
-      </section>
+  <div className="relative w-full max-w-3xl mx-auto rounded-2xl overflow-hidden">
+
+    {/* AFTER (BASE) */}
+    <img
+      src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+      className="w-full h-[400px] object-cover"
+    />
+
+    {/* BEFORE (OVERLAY) */}
+    <div
+      className="absolute top-0 left-0 h-full overflow-hidden"
+      style={{ width: `${slider}%` }}
+    >
+      <img
+        src="https://images.unsplash.com/photo-1541701494587-cb58502866ab"
+        className="w-full h-[400px] object-cover"
+      />
+    </div>
+
+    {/* SLIDER LINE */}
+    <div
+      className="absolute top-0 bottom-0 w-[2px] bg-white"
+      style={{ left: `${slider}%` }}
+    />
+
+    {/* RANGE */}
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value={slider}
+      onChange={(e) => setSlider(Number(e.target.value))}
+      className="absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3"
+    />
+
+  </div>
+
+  {/* LABEL */}
+  <div className="flex justify-between text-sm text-gray-400 mt-4 max-w-3xl mx-auto">
+    <span>Before</span>
+    <span>After</span>
+  </div>
+
+</section>
+
+    <section id="contact" className="py-32 px-6 relative overflow-hidden">
+
+  {/* BACKGROUND GLOW */}
+  <div className="absolute inset-0 flex justify-center">
+    <div className="w-[500px] h-[300px] bg-purple-500/20 blur-[120px] rounded-full" />
+  </div>
+
+  <div className="relative max-w-3xl mx-auto text-center">
+
+    {/* TITLE */}
+    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      {current.contact}
+    </h2>
+
+    {/* SUB */}
+    <p className="text-gray-400 mb-10">
+      Let’s turn your ideas into stunning visuals that stand out.
+    </p>
+
+    {/* SOCIAL */}
+    <div className="flex justify-center gap-6 mb-10">
+
+      <a href="#" className="p-4 rounded-full bg-white/10 border border-white/10 hover:scale-110 hover:bg-pink-500/20 transition">
+        <FaInstagram />
+      </a>
+
+      <a href="#" className="p-4 rounded-full bg-white/10 border border-white/10 hover:scale-110 hover:bg-blue-500/20 transition">
+        <FaLinkedin />
+      </a>
+
+      <a href="#" className="p-4 rounded-full bg-white/10 border border-white/10 hover:scale-110 hover:bg-white/20 transition">
+        <FaTiktok />
+      </a>
+
+    </div>
+
+    {/* CTA BUTTON */}
+    <a
+      href="https://wa.me/6281997837794"
+      className="inline-block px-10 py-4 rounded-xl font-semibold bg-gradient-to-r from-green-400 to-green-600 hover:scale-105 transition shadow-lg shadow-green-500/30"
+    >
+      {current.chat}
+    </a>
+
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="py-10 text-center text-sm text-gray-500">
