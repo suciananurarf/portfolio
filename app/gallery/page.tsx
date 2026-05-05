@@ -125,16 +125,67 @@ export default function GalleryPage() {
         <div
           className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-6"
           onClick={() => setIndex(null)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onTouchStart={(e) => (touchStartX = e.touches[0].clientX)}
+          onTouchEnd={(e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+              if (diff > 0) {
+                setIndex((prev) => (prev! + 1) % filtered.length);
+              } else {
+                setIndex((prev) => (prev! - 1 + filtered.length) % filtered.length);
+              }
+            }
+          }}
         >
+
+          {/* IMAGE */}
           <Image
             src={filtered[index].src}
             alt=""
             width={1200}
             height={800}
             className="max-w-4xl w-full rounded-xl"
+            onClick={(e) => e.stopPropagation()}
           />
+
+          {/* PREV BUTTON */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIndex((prev) => (prev! - 1 + filtered.length) % filtered.length);
+            }}
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-3xl bg-white/10 px-4 py-2 rounded-full hover:bg-white/20"
+          >
+            ←
+          </button>
+
+          {/* NEXT BUTTON */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIndex((prev) => (prev! + 1) % filtered.length);
+            }}
+            className="absolute right-6 top-1/2 -translate-y-1/2 text-3xl bg-white/10 px-4 py-2 rounded-full hover:bg-white/20"
+          >
+            →
+          </button>
+
+          {/* CLOSE */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIndex(null);
+            }}
+            className="absolute top-6 right-6 text-xl bg-white/10 px-3 py-1 rounded hover:bg-white/20"
+          >
+            ✕
+          </button>
+
+          {/* INDEX */}
+          <div className="absolute bottom-6 text-sm text-white/50">
+            {index + 1} / {filtered.length}
+          </div>
+
         </div>
       )}
     </main>
