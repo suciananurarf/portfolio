@@ -69,6 +69,7 @@ export default function Home() {
 
           <div className="hidden md:flex gap-6 items-center">
             <a href="#portfolio">Portfolio</a>
+            <a href="/gallery">Gallery</a>
             <a href="#contact">Contact</a>
 
             <button onClick={() => setLang(lang === "EN" ? "ID" : "EN")} className="border px-3 py-1 rounded-lg">
@@ -202,8 +203,8 @@ export default function Home() {
 
       {/* IMAGE */}
       <img
-        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-        className="relative rounded-2xl object-cover w-full h-[420px] shadow-xl"
+        src="/gallery/foto profil.jpg"
+        className="relative rounded-2xl object-cover w-full h-[550px] shadow-xl"
       />
 
       {/* FLOATING BADGE */}

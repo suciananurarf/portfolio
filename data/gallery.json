@@ -1,0 +1,849 @@
+[
+  {
+    "id": 1,
+    "src": "/gallery/bingkai/1.jpg",
+    "category": "bingkai",
+    "title": "1",
+    "description": "bingkai"
+  },
+  {
+    "id": 2,
+    "src": "/gallery/bingkai/10.jpg",
+    "category": "bingkai",
+    "title": "10",
+    "description": "bingkai"
+  },
+  {
+    "id": 3,
+    "src": "/gallery/bingkai/11.jpg",
+    "category": "bingkai",
+    "title": "11",
+    "description": "bingkai"
+  },
+  {
+    "id": 4,
+    "src": "/gallery/bingkai/12.jpg",
+    "category": "bingkai",
+    "title": "12",
+    "description": "bingkai"
+  },
+  {
+    "id": 5,
+    "src": "/gallery/bingkai/13.jpg",
+    "category": "bingkai",
+    "title": "13",
+    "description": "bingkai"
+  },
+  {
+    "id": 6,
+    "src": "/gallery/bingkai/14.jpg",
+    "category": "bingkai",
+    "title": "14",
+    "description": "bingkai"
+  },
+  {
+    "id": 7,
+    "src": "/gallery/bingkai/15.jpg",
+    "category": "bingkai",
+    "title": "15",
+    "description": "bingkai"
+  },
+  {
+    "id": 8,
+    "src": "/gallery/bingkai/16.jpg",
+    "category": "bingkai",
+    "title": "16",
+    "description": "bingkai"
+  },
+  {
+    "id": 9,
+    "src": "/gallery/bingkai/17.jpg",
+    "category": "bingkai",
+    "title": "17",
+    "description": "bingkai"
+  },
+  {
+    "id": 10,
+    "src": "/gallery/bingkai/18.jpg",
+    "category": "bingkai",
+    "title": "18",
+    "description": "bingkai"
+  },
+  {
+    "id": 11,
+    "src": "/gallery/bingkai/19.jpg",
+    "category": "bingkai",
+    "title": "19",
+    "description": "bingkai"
+  },
+  {
+    "id": 12,
+    "src": "/gallery/bingkai/2.jpg",
+    "category": "bingkai",
+    "title": "2",
+    "description": "bingkai"
+  },
+  {
+    "id": 13,
+    "src": "/gallery/bingkai/3.jpg",
+    "category": "bingkai",
+    "title": "3",
+    "description": "bingkai"
+  },
+  {
+    "id": 14,
+    "src": "/gallery/bingkai/4.jpg",
+    "category": "bingkai",
+    "title": "4",
+    "description": "bingkai"
+  },
+  {
+    "id": 15,
+    "src": "/gallery/bingkai/5.jpg",
+    "category": "bingkai",
+    "title": "5",
+    "description": "bingkai"
+  },
+  {
+    "id": 16,
+    "src": "/gallery/bingkai/6.jpg",
+    "category": "bingkai",
+    "title": "6",
+    "description": "bingkai"
+  },
+  {
+    "id": 17,
+    "src": "/gallery/bingkai/7.jpg",
+    "category": "bingkai",
+    "title": "7",
+    "description": "bingkai"
+  },
+  {
+    "id": 18,
+    "src": "/gallery/bingkai/8.jpg",
+    "category": "bingkai",
+    "title": "8",
+    "description": "bingkai"
+  },
+  {
+    "id": 19,
+    "src": "/gallery/bingkai/9.jpg",
+    "category": "bingkai",
+    "title": "9",
+    "description": "bingkai"
+  },
+  {
+    "id": 20,
+    "src": "/gallery/design lain-lain/1.jpg",
+    "category": "design lain-lain",
+    "title": "1",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 21,
+    "src": "/gallery/design lain-lain/10.jpg",
+    "category": "design lain-lain",
+    "title": "10",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 22,
+    "src": "/gallery/design lain-lain/11.jpg",
+    "category": "design lain-lain",
+    "title": "11",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 23,
+    "src": "/gallery/design lain-lain/12.jpg",
+    "category": "design lain-lain",
+    "title": "12",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 24,
+    "src": "/gallery/design lain-lain/13.jpeg",
+    "category": "design lain-lain",
+    "title": "13",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 25,
+    "src": "/gallery/design lain-lain/14.jpg",
+    "category": "design lain-lain",
+    "title": "14",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 26,
+    "src": "/gallery/design lain-lain/15.jpeg",
+    "category": "design lain-lain",
+    "title": "15",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 27,
+    "src": "/gallery/design lain-lain/16.jpg",
+    "category": "design lain-lain",
+    "title": "16",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 28,
+    "src": "/gallery/design lain-lain/17.jpg",
+    "category": "design lain-lain",
+    "title": "17",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 29,
+    "src": "/gallery/design lain-lain/18.jpg",
+    "category": "design lain-lain",
+    "title": "18",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 30,
+    "src": "/gallery/design lain-lain/19.jpg",
+    "category": "design lain-lain",
+    "title": "19",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 31,
+    "src": "/gallery/design lain-lain/2.jpg",
+    "category": "design lain-lain",
+    "title": "2",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 32,
+    "src": "/gallery/design lain-lain/20.jpg",
+    "category": "design lain-lain",
+    "title": "20",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 33,
+    "src": "/gallery/design lain-lain/21.jpg",
+    "category": "design lain-lain",
+    "title": "21",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 34,
+    "src": "/gallery/design lain-lain/22.jpg",
+    "category": "design lain-lain",
+    "title": "22",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 35,
+    "src": "/gallery/design lain-lain/23.jpg",
+    "category": "design lain-lain",
+    "title": "23",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 36,
+    "src": "/gallery/design lain-lain/24.jpg",
+    "category": "design lain-lain",
+    "title": "24",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 37,
+    "src": "/gallery/design lain-lain/25.jpg",
+    "category": "design lain-lain",
+    "title": "25",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 38,
+    "src": "/gallery/design lain-lain/26.jpg",
+    "category": "design lain-lain",
+    "title": "26",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 39,
+    "src": "/gallery/design lain-lain/27.jpg",
+    "category": "design lain-lain",
+    "title": "27",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 40,
+    "src": "/gallery/design lain-lain/28.jpg",
+    "category": "design lain-lain",
+    "title": "28",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 41,
+    "src": "/gallery/design lain-lain/3.jpg",
+    "category": "design lain-lain",
+    "title": "3",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 42,
+    "src": "/gallery/design lain-lain/4.jpg",
+    "category": "design lain-lain",
+    "title": "4",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 43,
+    "src": "/gallery/design lain-lain/5.jpg",
+    "category": "design lain-lain",
+    "title": "5",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 44,
+    "src": "/gallery/design lain-lain/6.jpg",
+    "category": "design lain-lain",
+    "title": "6",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 45,
+    "src": "/gallery/design lain-lain/7.jpg",
+    "category": "design lain-lain",
+    "title": "7",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 46,
+    "src": "/gallery/design lain-lain/8.jpg",
+    "category": "design lain-lain",
+    "title": "8",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 47,
+    "src": "/gallery/design lain-lain/9.jpg",
+    "category": "design lain-lain",
+    "title": "9",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 48,
+    "src": "/gallery/design lain-lain/Preview Layout GSP.jpg",
+    "category": "design lain-lain",
+    "title": "Preview Layout GSP",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 49,
+    "src": "/gallery/design lain-lain/Preview pemasangan-01.jpg",
+    "category": "design lain-lain",
+    "title": "Preview pemasangan-01",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 50,
+    "src": "/gallery/design lain-lain/Preview Sign Lift GCK update_Artboard 2.jpg",
+    "category": "design lain-lain",
+    "title": "Preview Sign Lift GCK update_Artboard 2",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 51,
+    "src": "/gallery/design lain-lain/Preview STICKER KACA BUKA TUTUP TOKO PIK.jpg",
+    "category": "design lain-lain",
+    "title": "Preview STICKER KACA BUKA TUTUP TOKO PIK",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 52,
+    "src": "/gallery/design lain-lain/Preview STICKER KACA GADING SERPONG.jpg",
+    "category": "design lain-lain",
+    "title": "Preview STICKER KACA GADING SERPONG",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 53,
+    "src": "/gallery/design lain-lain/Preview Sticker Kaca Pintu Masuk GCK-01.jpg",
+    "category": "design lain-lain",
+    "title": "Preview Sticker Kaca Pintu Masuk GCK-01",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 54,
+    "src": "/gallery/design lain-lain/Preview STICKER KACA PONDOK INDAH.jpg",
+    "category": "design lain-lain",
+    "title": "Preview STICKER KACA PONDOK INDAH",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 55,
+    "src": "/gallery/design lain-lain/Preview Ukuran Banner Depan Toko Bandung-01.jpg",
+    "category": "design lain-lain",
+    "title": "Preview Ukuran Banner Depan Toko Bandung-01",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 56,
+    "src": "/gallery/design lain-lain/Props Photobooth ideas-01.png",
+    "category": "design lain-lain",
+    "title": "Props Photobooth ideas-01",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 57,
+    "src": "/gallery/design lain-lain/review update ukuran 220724-01.jpg",
+    "category": "design lain-lain",
+    "title": "review update ukuran 220724-01",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 58,
+    "src": "/gallery/design lain-lain/Revisi Banner Promo Lampu Bandung 400x100cm FINAL PRINT.jpg",
+    "category": "design lain-lain",
+    "title": "Revisi Banner Promo Lampu Bandung 400x100cm FINAL PRINT",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 59,
+    "src": "/gallery/design lain-lain/SIGN GCK MASUK (IN) Final_90cmx60cm preview.jpg",
+    "category": "design lain-lain",
+    "title": "SIGN GCK MASUK (IN) Final_90cmx60cm preview",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 60,
+    "src": "/gallery/design lain-lain/SIGN GCK MASUK (IN) Final_90cmx60cm.jpg",
+    "category": "design lain-lain",
+    "title": "SIGN GCK MASUK (IN) Final_90cmx60cm",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 61,
+    "src": "/gallery/design lain-lain/SIGN JALUR LAMBAT_80x60cm preview.jpg",
+    "category": "design lain-lain",
+    "title": "SIGN JALUR LAMBAT_80x60cm preview",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 62,
+    "src": "/gallery/design lain-lain/SIGN JALUR LAMBAT_80x60cm.jpg",
+    "category": "design lain-lain",
+    "title": "SIGN JALUR LAMBAT_80x60cm",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 63,
+    "src": "/gallery/design lain-lain/Sign Lift Gading Serpong preview.jpg",
+    "category": "design lain-lain",
+    "title": "Sign Lift Gading Serpong preview",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 64,
+    "src": "/gallery/design lain-lain/Sign Lift Pondok Indah_30x50cm pemasangan.jpg",
+    "category": "design lain-lain",
+    "title": "Sign Lift Pondok Indah_30x50cm pemasangan",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 65,
+    "src": "/gallery/design lain-lain/Sign Lift Pondok Indah_30x50cm.jpg",
+    "category": "design lain-lain",
+    "title": "Sign Lift Pondok Indah_30x50cm",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 66,
+    "src": "/gallery/design lain-lain/WhatsApp Image 2023-10-07 at 16.03.41_148752da.jpg",
+    "category": "design lain-lain",
+    "title": "WhatsApp Image 2023-10-07 at 16.03.41_148752da",
+    "description": "design lain-lain"
+  },
+  {
+    "id": 67,
+    "src": "/gallery/event bazaar/1.jpg",
+    "category": "event bazaar",
+    "title": "1",
+    "description": "event bazaar"
+  },
+  {
+    "id": 68,
+    "src": "/gallery/event bazaar/10.jpg",
+    "category": "event bazaar",
+    "title": "10",
+    "description": "event bazaar"
+  },
+  {
+    "id": 69,
+    "src": "/gallery/event bazaar/11.jpg",
+    "category": "event bazaar",
+    "title": "11",
+    "description": "event bazaar"
+  },
+  {
+    "id": 70,
+    "src": "/gallery/event bazaar/12.jpg",
+    "category": "event bazaar",
+    "title": "12",
+    "description": "event bazaar"
+  },
+  {
+    "id": 71,
+    "src": "/gallery/event bazaar/13.jpg",
+    "category": "event bazaar",
+    "title": "13",
+    "description": "event bazaar"
+  },
+  {
+    "id": 72,
+    "src": "/gallery/event bazaar/2.jpg",
+    "category": "event bazaar",
+    "title": "2",
+    "description": "event bazaar"
+  },
+  {
+    "id": 73,
+    "src": "/gallery/event bazaar/3.jpg",
+    "category": "event bazaar",
+    "title": "3",
+    "description": "event bazaar"
+  },
+  {
+    "id": 74,
+    "src": "/gallery/event bazaar/4.jpg",
+    "category": "event bazaar",
+    "title": "4",
+    "description": "event bazaar"
+  },
+  {
+    "id": 75,
+    "src": "/gallery/event bazaar/5.jpg",
+    "category": "event bazaar",
+    "title": "5",
+    "description": "event bazaar"
+  },
+  {
+    "id": 76,
+    "src": "/gallery/event bazaar/6.jpg",
+    "category": "event bazaar",
+    "title": "6",
+    "description": "event bazaar"
+  },
+  {
+    "id": 77,
+    "src": "/gallery/event bazaar/7.jpg",
+    "category": "event bazaar",
+    "title": "7",
+    "description": "event bazaar"
+  },
+  {
+    "id": 78,
+    "src": "/gallery/event bazaar/8.jpg",
+    "category": "event bazaar",
+    "title": "8",
+    "description": "event bazaar"
+  },
+  {
+    "id": 79,
+    "src": "/gallery/event bazaar/9.jpg",
+    "category": "event bazaar",
+    "title": "9",
+    "description": "event bazaar"
+  },
+  {
+    "id": 80,
+    "src": "/gallery/hanging poster/1.jpg",
+    "category": "hanging poster",
+    "title": "1",
+    "description": "hanging poster"
+  },
+  {
+    "id": 81,
+    "src": "/gallery/hanging poster/10.jpg",
+    "category": "hanging poster",
+    "title": "10",
+    "description": "hanging poster"
+  },
+  {
+    "id": 82,
+    "src": "/gallery/hanging poster/11.jpg",
+    "category": "hanging poster",
+    "title": "11",
+    "description": "hanging poster"
+  },
+  {
+    "id": 83,
+    "src": "/gallery/hanging poster/12.jpg",
+    "category": "hanging poster",
+    "title": "12",
+    "description": "hanging poster"
+  },
+  {
+    "id": 84,
+    "src": "/gallery/hanging poster/13.jpg",
+    "category": "hanging poster",
+    "title": "13",
+    "description": "hanging poster"
+  },
+  {
+    "id": 85,
+    "src": "/gallery/hanging poster/14.jpg",
+    "category": "hanging poster",
+    "title": "14",
+    "description": "hanging poster"
+  },
+  {
+    "id": 86,
+    "src": "/gallery/hanging poster/15.jpg",
+    "category": "hanging poster",
+    "title": "15",
+    "description": "hanging poster"
+  },
+  {
+    "id": 87,
+    "src": "/gallery/hanging poster/16.jpg",
+    "category": "hanging poster",
+    "title": "16",
+    "description": "hanging poster"
+  },
+  {
+    "id": 88,
+    "src": "/gallery/hanging poster/17.jpg",
+    "category": "hanging poster",
+    "title": "17",
+    "description": "hanging poster"
+  },
+  {
+    "id": 89,
+    "src": "/gallery/hanging poster/18.jpg",
+    "category": "hanging poster",
+    "title": "18",
+    "description": "hanging poster"
+  },
+  {
+    "id": 90,
+    "src": "/gallery/hanging poster/19.jpg",
+    "category": "hanging poster",
+    "title": "19",
+    "description": "hanging poster"
+  },
+  {
+    "id": 91,
+    "src": "/gallery/hanging poster/2.jpg",
+    "category": "hanging poster",
+    "title": "2",
+    "description": "hanging poster"
+  },
+  {
+    "id": 92,
+    "src": "/gallery/hanging poster/20.jpg",
+    "category": "hanging poster",
+    "title": "20",
+    "description": "hanging poster"
+  },
+  {
+    "id": 93,
+    "src": "/gallery/hanging poster/21.jpg",
+    "category": "hanging poster",
+    "title": "21",
+    "description": "hanging poster"
+  },
+  {
+    "id": 94,
+    "src": "/gallery/hanging poster/22.jpg",
+    "category": "hanging poster",
+    "title": "22",
+    "description": "hanging poster"
+  },
+  {
+    "id": 95,
+    "src": "/gallery/hanging poster/3.jpg",
+    "category": "hanging poster",
+    "title": "3",
+    "description": "hanging poster"
+  },
+  {
+    "id": 96,
+    "src": "/gallery/hanging poster/4.jpg",
+    "category": "hanging poster",
+    "title": "4",
+    "description": "hanging poster"
+  },
+  {
+    "id": 97,
+    "src": "/gallery/hanging poster/5.jpg",
+    "category": "hanging poster",
+    "title": "5",
+    "description": "hanging poster"
+  },
+  {
+    "id": 98,
+    "src": "/gallery/hanging poster/6.jpg",
+    "category": "hanging poster",
+    "title": "6",
+    "description": "hanging poster"
+  },
+  {
+    "id": 99,
+    "src": "/gallery/hanging poster/7.jpg",
+    "category": "hanging poster",
+    "title": "7",
+    "description": "hanging poster"
+  },
+  {
+    "id": 100,
+    "src": "/gallery/hanging poster/8.jpg",
+    "category": "hanging poster",
+    "title": "8",
+    "description": "hanging poster"
+  },
+  {
+    "id": 101,
+    "src": "/gallery/hanging poster/9.jpg",
+    "category": "hanging poster",
+    "title": "9",
+    "description": "hanging poster"
+  },
+  {
+    "id": 102,
+    "src": "/gallery/merchandise/1.jpg",
+    "category": "merchandise",
+    "title": "1",
+    "description": "merchandise"
+  },
+  {
+    "id": 103,
+    "src": "/gallery/merchandise/10.jpg",
+    "category": "merchandise",
+    "title": "10",
+    "description": "merchandise"
+  },
+  {
+    "id": 104,
+    "src": "/gallery/merchandise/11.jpg",
+    "category": "merchandise",
+    "title": "11",
+    "description": "merchandise"
+  },
+  {
+    "id": 105,
+    "src": "/gallery/merchandise/2.jpg",
+    "category": "merchandise",
+    "title": "2",
+    "description": "merchandise"
+  },
+  {
+    "id": 106,
+    "src": "/gallery/merchandise/3.jpg",
+    "category": "merchandise",
+    "title": "3",
+    "description": "merchandise"
+  },
+  {
+    "id": 107,
+    "src": "/gallery/merchandise/4.jpg",
+    "category": "merchandise",
+    "title": "4",
+    "description": "merchandise"
+  },
+  {
+    "id": 108,
+    "src": "/gallery/merchandise/5.jpg",
+    "category": "merchandise",
+    "title": "5",
+    "description": "merchandise"
+  },
+  {
+    "id": 109,
+    "src": "/gallery/merchandise/6.jpg",
+    "category": "merchandise",
+    "title": "6",
+    "description": "merchandise"
+  },
+  {
+    "id": 110,
+    "src": "/gallery/merchandise/7.jpg",
+    "category": "merchandise",
+    "title": "7",
+    "description": "merchandise"
+  },
+  {
+    "id": 111,
+    "src": "/gallery/merchandise/8.jpg",
+    "category": "merchandise",
+    "title": "8",
+    "description": "merchandise"
+  },
+  {
+    "id": 112,
+    "src": "/gallery/merchandise/9.jpg",
+    "category": "merchandise",
+    "title": "9",
+    "description": "merchandise"
+  },
+  {
+    "id": 113,
+    "src": "/gallery/project/1.jpg",
+    "category": "project",
+    "title": "1",
+    "description": "project"
+  },
+  {
+    "id": 114,
+    "src": "/gallery/project/2.jpg",
+    "category": "project",
+    "title": "2",
+    "description": "project"
+  },
+  {
+    "id": 115,
+    "src": "/gallery/project/3.jpg",
+    "category": "project",
+    "title": "3",
+    "description": "project"
+  },
+  {
+    "id": 116,
+    "src": "/gallery/project/4.jpg",
+    "category": "project",
+    "title": "4",
+    "description": "project"
+  },
+  {
+    "id": 117,
+    "src": "/gallery/project/5.jpg",
+    "category": "project",
+    "title": "5",
+    "description": "project"
+  },
+  {
+    "id": 118,
+    "src": "/gallery/project/6.jpg",
+    "category": "project",
+    "title": "6",
+    "description": "project"
+  },
+  {
+    "id": 119,
+    "src": "/gallery/project/7.jpg",
+    "category": "project",
+    "title": "7",
+    "description": "project"
+  },
+  {
+    "id": 120,
+    "src": "/gallery/project/8.jpg",
+    "category": "project",
+    "title": "8",
+    "description": "project"
+  },
+  {
+    "id": 121,
+    "src": "/gallery/project/9.jpg",
+    "category": "project",
+    "title": "9",
+    "description": "project"
+  }
+]
