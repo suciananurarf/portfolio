@@ -1,14 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import data from "@/data/gallery.json";
+import { FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
 
+  /* =========================
+     🎯 SCROLL + VIEW DETECT
+  ========================== */
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    once: false,
+    margin: "-100px",
+  });
+
+  const [played, setPlayed] = useState(false);
+
+  useEffect(() => {
+    if (isInView) setPlayed(true);
+  }, [isInView]);
+
+  /* =========================
+     🔢 COUNTER HOOK
+  ========================== */
+  function useCounter(target: number, duration = 1200) {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      if (target === 0) {
+        setCount(0);
+        return;
+      }
+
+      let start = 0;
+      const increment = target / (duration / 20);
+
+      const timer = setInterval(() => {
+        start += increment;
+
+        if (start >= target) {
+          setCount(target);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 20);
+
+      return () => clearInterval(timer);
+    }, [target, duration]);
+
+    return count;
+  }
+
+  /* =========================
+     🔢 COUNTER VALUES
+  ========================== */
+  const projects = useCounter(played ? 50 : 0);
+  const clients = useCounter(played ? 30 : 0);
+  const years = useCounter(played ? 3 : 0);
+
+  /* =========================
+     🧭 MENU
+  ========================== */
   const menus = [
     { name: "Beranda", link: "#home" },
     { name: "Tentang", link: "#about" },
@@ -19,13 +78,15 @@ export default function Home() {
   ];
 
   const scrollTo = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-};
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
 
   return (
+    
     <main className="bg-black text-white overflow-x-hidden">
 
       {/* 🔝 NAVBAR */}
@@ -132,7 +193,11 @@ export default function Home() {
 </section>
 
       {/* 🙋 ABOUT */}
-      <section id="about" className="py-20 px-5">
+ <section
+        ref={ref}
+        id="about"
+        className="py-24 px-5 scroll-mt-24"
+      >
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
@@ -141,16 +206,11 @@ export default function Home() {
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative"
           >
             <img
               src="/gallery/profil.jpg"
               className="w-full h-[320px] md:h-[420px] object-cover rounded-2xl"
             />
-
-            <div className="absolute bottom-3 left-3 text-xs bg-black/80 px-3 py-1 rounded-lg border border-white/10">
-              3+ Years Experience
-            </div>
           </motion.div>
 
           {/* TEXT */}
@@ -171,36 +231,27 @@ export default function Home() {
               </span>
             </h2>
 
-            <p className="text-gray-400 mb-4">
-              I’m Suciana, a creative image editor and visual designer.
+            <p className="text-gray-400 mb-6">
+              I’m Suciana, a creative designer focused on impactful visuals.
             </p>
-
-            <p className="text-gray-500 mb-6">
-              I help brands stand out visually and communicate clearly.
-            </p>
-
-            {/* SKILLS */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {["Photoshop", "Canva", "CapCut", "CorelDraw"].map((s) => (
-                <span key={s} className="px-3 py-1 text-xs rounded-full bg-white/10 border border-white/10">
-                  {s}
-                </span>
-              ))}
-            </div>
 
             {/* STATS */}
-            <div className="flex justify-between md:justify-start md:gap-10">
+            <div className="flex gap-8">
 
-              {[
-                { num: "50+", label: "Projects" },
-                { num: "30+", label: "Clients" },
-                { num: "3+", label: "Years" }
-              ].map((item, i) => (
-                <div key={i}>
-                  <p className="text-xl font-bold">{item.num}</p>
-                  <p className="text-gray-500 text-xs">{item.label}</p>
-                </div>
-              ))}
+              <div>
+                <p className="text-2xl font-bold">{projects}+</p>
+                <p className="text-gray-500 text-xs">Projects</p>
+              </div>
+
+              <div>
+                <p className="text-2xl font-bold">{clients}+</p>
+                <p className="text-gray-500 text-xs">Clients</p>
+              </div>
+
+              <div>
+                <p className="text-2xl font-bold">{years}+</p>
+                <p className="text-gray-500 text-xs">Years</p>
+              </div>
 
             </div>
 
@@ -259,22 +310,31 @@ export default function Home() {
 
       {[
         {
-          title: "Freelance Designer",
-          desc: "Handling visual design & editing for various clients",
-          year: "2023 - Now",
+          role: "Staf Produksi",
+          company: "Prenadamedia Group",
+          duration: "1 Year",
+          desc: "Handled production workflow for publishing materials and ensured consistent output quality."
         },
         {
-          title: "Content Creator",
-          desc: "Creating engaging visual content for social media",
-          year: "2022 - 2023",
+          role: "Social Media Advertising",
+          company: "Lynk Digital Agency",
+          duration: "4 Years",
+          desc: "Managed social media campaigns, optimized content performance, and increased audience engagement."
         },
         {
-          title: "Design Project",
-          desc: "Various branding & poster design projects",
-          year: "2021 - 2022",
+          role: "Graphic Designer",
+          company: "PT SQINPRO Kosmetika Industri",
+          duration: "6 Months",
+          desc: "Created branding, packaging, and promotional visuals aligned with product identity."
         },
+        {
+          role: "Staf Graphic Designer",
+          company: "PT Chandra Karya Furniture",
+          duration: "4 Years - Present",
+          desc: "Designed marketing visuals, banners, and digital assets for campaigns and brand promotion."
+        }
       ].map((item, i) => (
-        <div key={i} className="relative pl-12">
+        <div key={i} className="relative pl-12 group">
 
           {/* DOT + GLOW */}
           <div className="absolute left-0 top-2">
@@ -283,18 +343,28 @@ export default function Home() {
           </div>
 
           {/* CARD */}
-          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur hover:bg-purple-500/10 transition">
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur hover:bg-white/10 transition-all duration-300 group-hover:scale-[1.02]">
 
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="font-semibold text-lg">
-                {item.title}
-              </h3>
+            {/* HEADER */}
+            <div className="flex justify-between items-start mb-3">
 
-              <span className="text-xs text-purple-400">
-                {item.year}
+              <div>
+                <h3 className="font-semibold text-lg leading-tight">
+                  {item.role}
+                </h3>
+
+                <p className="text-xs text-purple-400 mt-1">
+                  {item.company}
+                </p>
+              </div>
+
+              <span className="text-[11px] text-gray-400 whitespace-nowrap">
+                {item.duration}
               </span>
+
             </div>
 
+            {/* DESC */}
             <p className="text-sm text-gray-400 leading-relaxed">
               {item.desc}
             </p>
@@ -318,32 +388,33 @@ export default function Home() {
   </h2>
 
   {/* GRID */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
 
     {[
-      { name: "Photoshop", color: "from-blue-500 to-cyan-400" },
+      { name: "Adobe Photoshop", color: "from-blue-500 to-cyan-400" },
+      { name: "Adobe Illustrator", color: "from-orange-500 to-yellow-400" },
+      { name: "Adobe InDesign", color: "from-pink-500 to-rose-400" },
       { name: "Canva", color: "from-purple-500 to-pink-400" },
       { name: "CapCut", color: "from-gray-300 to-gray-500" },
-      { name: "CorelDraw", color: "from-green-400 to-emerald-500" },
     ].map((tool, i) => (
       <div
         key={i}
-        className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-white/0"
+        className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-transparent"
       >
 
-        {/* INNER CARD */}
-        <div className="relative rounded-2xl bg-black/60 backdrop-blur p-6 h-full flex flex-col items-center justify-center hover:scale-[1.03] transition">
+        {/* INNER */}
+        <div className="relative rounded-2xl bg-black/60 backdrop-blur p-5 h-full flex flex-col items-center justify-center hover:scale-[1.05] transition-all duration-300">
 
           {/* GLOW */}
           <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition bg-gradient-to-br ${tool.color} blur-2xl`} />
 
-          {/* ICON PLACEHOLDER */}
-          <div className="text-xl mb-3 opacity-80">
-            ●
+          {/* ICON STYLE (FAKE LOGO BOX) */}
+          <div className={`mb-3 w-10 h-10 flex items-center justify-center rounded-lg text-xs font-bold bg-gradient-to-br ${tool.color}`}>
+            {tool.name.split(" ")[1]?.charAt(0) || tool.name.charAt(0)}
           </div>
 
           {/* NAME */}
-          <p className="text-sm font-medium">
+          <p className="text-xs sm:text-sm font-medium leading-tight">
             {tool.name}
           </p>
 
@@ -356,50 +427,92 @@ export default function Home() {
 
 </section>
 
-<section id="contact" className="py-28 px-5 max-w-5xl mx-auto text-center relative">
+<section id="contact" className="relative py-32 px-5 overflow-hidden">
 
-  {/* GLOW BACKGROUND */}
-  <div className="absolute inset-0 flex justify-center">
-    <div className="w-[300px] h-[300px] bg-purple-500/20 blur-[120px] rounded-full" />
+  {/* 🌌 BACKGROUND */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute w-[500px] h-[500px] bg-purple-500/20 blur-[140px] rounded-full top-[-150px] left-[-100px]" />
+    <div className="absolute w-[400px] h-[400px] bg-pink-500/20 blur-[120px] rounded-full bottom-[-100px] right-[-80px]" />
   </div>
 
-  {/* CONTENT */}
-  <div className="relative">
+  <div className="max-w-4xl mx-auto text-center">
 
-    <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+    {/* TITLE */}
+    <h2 className="text-3xl md:text-5xl font-bold mb-4">
       Let’s Work Together
     </h2>
 
-    <p className="text-gray-400 mb-10 max-w-md mx-auto">
-      Have a project in mind? Let’s bring your ideas to life with creative visuals that stand out.
+    {/* DESC */}
+    <p className="text-gray-400 max-w-md mx-auto mb-12 leading-relaxed">
+      Have a project in mind? I help brands and individuals create visuals that stand out and leave a lasting impression.
     </p>
 
-    {/* SOCIAL */}
-    <div className="flex justify-center flex-wrap gap-4 mb-10">
+    {/* 🔥 SOCIAL ICON */}
+    <div className="flex justify-center gap-5 mb-12 flex-wrap">
 
       {[
-        { name: "Instagram", link: "#" },
-        { name: "LinkedIn", link: "#" },
-        { name: "TikTok", link: "#" },
+        {
+          icon: <FaInstagram />,
+          link: "https://www.instagram.com/sucianarfndy",
+          color: "hover:text-pink-400",
+          glow: "from-pink-500 via-purple-500 to-yellow-400"
+        },
+        {
+          icon: <FaLinkedin />,
+          link: "https://id.linkedin.com/in/suciana-nur-arifandy-983b39206",
+          color: "hover:text-blue-400",
+          glow: "from-blue-500 to-cyan-400"
+        },
+        {
+          icon: <FaTiktok />,
+          link: "https://www.tiktok.com/@winsskyt?_r=1&_t=ZS-966glriXRFY",
+          color: "hover:text-white",
+          glow: "from-white to-gray-400"
+        },
       ].map((item, i) => (
         <a
           key={i}
           href={item.link}
-          className="px-4 py-2 text-sm rounded-full border border-white/10 bg-white/5 backdrop-blur hover:bg-purple-500/20 transition"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`group relative w-14 h-14 flex items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur transition-all duration-300 ${item.color}`}
         >
-          {item.name}
+
+          {/* GLOW */}
+          <div className={`absolute inset-0 opacity-0 group-hover:opacity-30 transition bg-gradient-to-br ${item.glow} blur-xl`} />
+
+          {/* ICON */}
+          <div className="relative z-10 text-lg group-hover:scale-110 transition">
+            {item.icon}
+          </div>
+
         </a>
       ))}
 
     </div>
 
-    {/* CTA */}
+    {/* 🚀 CTA */}
     <a
       href="https://wa.me/6281997837794"
-      className="inline-block bg-gradient-to-r from-green-400 to-green-500 px-8 py-3 rounded-xl text-sm font-medium hover:scale-105 transition shadow-lg shadow-green-500/20"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block relative group"
     >
-      Chat via WhatsApp
+
+      {/* GLOW */}
+      <div className="absolute inset-0 bg-green-500 blur-2xl opacity-30 group-hover:opacity-60 transition rounded-xl" />
+
+      {/* BUTTON */}
+      <div className="relative bg-gradient-to-r from-green-400 to-green-500 px-10 py-4 rounded-xl font-semibold tracking-wide hover:scale-105 transition shadow-xl shadow-green-500/30">
+        Start a Project →
+      </div>
+
     </a>
+
+    {/* FOOT NOTE */}
+    <p className="mt-16 text-xs text-gray-500">
+      Available for freelance & collaboration
+    </p>
 
   </div>
 
