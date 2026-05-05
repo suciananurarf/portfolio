@@ -203,7 +203,7 @@ export default function Home() {
 
       {/* IMAGE */}
       <img
-        src="/gallery/foto profil.jpg"
+        src="/gallery/profil.jpg"
         className="relative rounded-2xl object-cover w-full h-[550px] shadow-xl"
       />
 
