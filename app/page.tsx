@@ -18,6 +18,13 @@ export default function Home() {
     { name: "Contact", link: "#contact" },
   ];
 
+  const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+
   return (
     <main className="bg-black text-white overflow-x-hidden">
 
@@ -26,7 +33,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex justify-between items-center px-5 py-4">
 
           <h1 className="text-sm font-semibold">
-            Suciana
+            Suciana Nur Arifandy
           </h1>
 
           {/* DESKTOP */}
@@ -68,26 +75,61 @@ export default function Home() {
       </div>
 
       {/* 🚀 HERO */}
-      <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-5 pt-24">
+      <section id="home" className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 pt-24 overflow-hidden">
 
-        <h1 className="text-3xl md:text-6xl font-bold">
-          Suciana Nur Arifandy
-        </h1>
+  {/* 🌌 BACKGROUND GLOW (SAFE) */}
+  <div className="absolute inset-0 -z-10 flex justify-center">
+    <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] bg-purple-500/20 blur-[120px] rounded-full" />
+  </div>
 
-        <p className="mt-4 text-gray-400">
-          Creative Image Editor & Visual Designer
-        </p>
+  {/* CONTENT */}
+  <div className="max-w-2xl mx-auto">
 
-        <div className="mt-6 flex gap-3">
-          <a href="#gallery" className="bg-white text-black px-5 py-2.5 rounded-xl">
-            Portfolio
-          </a>
-          <a href="#contact" className="border px-5 py-2.5 rounded-xl">
-            Hire Me
-          </a>
-        </div>
+    {/* LABEL */}
+    <p className="text-[10px] tracking-[3px] text-purple-400 mb-3">
+      CREATIVE DESIGNER
+    </p>
 
-      </section>
+    {/* TITLE */}
+    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
+      Suciana Nur{" "}
+      <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        Arifandy
+      </span>
+    </h1>
+
+    {/* SUBTITLE */}
+    <p className="mt-4 text-gray-400 text-sm sm:text-base max-w-md mx-auto">
+      Turning ideas into visually stunning designs that capture attention and communicate clearly.
+    </p>
+
+    {/* CTA */}
+    <div className="mt-8 flex flex-wrap justify-center gap-3">
+
+      <a
+        href="#gallery"
+        className="bg-white text-black px-6 py-2.5 rounded-xl text-sm font-medium hover:scale-105 transition"
+      >
+        View Portfolio
+      </a>
+
+      <a
+        href="#contact"
+        className="border border-white/20 px-6 py-2.5 rounded-xl text-sm hover:bg-white/10 transition"
+      >
+        Hire Me
+      </a>
+
+    </div>
+
+    {/* SCROLL INDICATOR */}
+    <div className="mt-16 text-xs text-white/40 animate-bounce">
+      ↓ Scroll
+    </div>
+
+  </div>
+
+</section>
 
       {/* 🙋 ABOUT */}
       <section id="about" className="py-20 px-5">
@@ -201,66 +243,112 @@ export default function Home() {
 
 </section>
 
-<section id="experience" className="py-24 px-5 max-w-4xl mx-auto">
+<section id="experience" className="py-24 px-5 max-w-5xl mx-auto">
 
-  <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+  {/* TITLE */}
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
     Experience
   </h2>
 
-  <div className="relative border-l border-white/10 pl-6 space-y-10">
+  <div className="relative">
 
-    {[
-      {
-        title: "Freelance Designer",
-        desc: "Handling visual design & editing for various clients",
-        year: "2023 - Now",
-      },
-      {
-        title: "Content Creator",
-        desc: "Creating engaging visual content for social media",
-        year: "2022 - 2023",
-      },
-      {
-        title: "Design Project",
-        desc: "Various branding & poster design projects",
-        year: "2021 - 2022",
-      },
-    ].map((item, i) => (
-      <div key={i} className="relative">
+    {/* LINE */}
+    <div className="absolute left-3 top-0 w-[2px] h-full bg-gradient-to-b from-purple-500/40 to-transparent" />
 
-        {/* DOT */}
-        <div className="absolute -left-[11px] top-1 w-3 h-3 bg-purple-500 rounded-full" />
+    <div className="space-y-12">
 
-        <h3 className="font-semibold text-lg">{item.title}</h3>
-        <p className="text-sm text-gray-400">{item.desc}</p>
-        <p className="text-xs text-gray-500 mt-1">{item.year}</p>
+      {[
+        {
+          title: "Freelance Designer",
+          desc: "Handling visual design & editing for various clients",
+          year: "2023 - Now",
+        },
+        {
+          title: "Content Creator",
+          desc: "Creating engaging visual content for social media",
+          year: "2022 - 2023",
+        },
+        {
+          title: "Design Project",
+          desc: "Various branding & poster design projects",
+          year: "2021 - 2022",
+        },
+      ].map((item, i) => (
+        <div key={i} className="relative pl-12">
 
-      </div>
-    ))}
+          {/* DOT + GLOW */}
+          <div className="absolute left-0 top-2">
+            <div className="w-3 h-3 bg-purple-500 rounded-full relative z-10" />
+            <div className="absolute inset-0 bg-purple-500 blur-md opacity-40 rounded-full" />
+          </div>
+
+          {/* CARD */}
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur hover:bg-purple-500/10 transition">
+
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-semibold text-lg">
+                {item.title}
+              </h3>
+
+              <span className="text-xs text-purple-400">
+                {item.year}
+              </span>
+            </div>
+
+            <p className="text-sm text-gray-400 leading-relaxed">
+              {item.desc}
+            </p>
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
 
   </div>
 
 </section>
 
-<section id="tools" className="py-24 px-5 text-center">
+<section id="tools" className="py-24 px-5 max-w-6xl mx-auto text-center">
 
-  <h2 className="text-3xl md:text-4xl font-bold mb-12">
-    Tools
+  {/* TITLE */}
+  <h2 className="text-3xl md:text-4xl font-bold mb-14">
+    Tools & Software
   </h2>
 
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+  {/* GRID */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
     {[
-      "Photoshop",
-      "Canva",
-      "CapCut",
-      "CorelDraw",
+      { name: "Photoshop", color: "from-blue-500 to-cyan-400" },
+      { name: "Canva", color: "from-purple-500 to-pink-400" },
+      { name: "CapCut", color: "from-gray-300 to-gray-500" },
+      { name: "CorelDraw", color: "from-green-400 to-emerald-500" },
     ].map((tool, i) => (
       <div
         key={i}
-        className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur hover:bg-purple-500/10 transition"
+        className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-white/0"
       >
-        <p className="text-sm">{tool}</p>
+
+        {/* INNER CARD */}
+        <div className="relative rounded-2xl bg-black/60 backdrop-blur p-6 h-full flex flex-col items-center justify-center hover:scale-[1.03] transition">
+
+          {/* GLOW */}
+          <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition bg-gradient-to-br ${tool.color} blur-2xl`} />
+
+          {/* ICON PLACEHOLDER */}
+          <div className="text-xl mb-3 opacity-80">
+            ●
+          </div>
+
+          {/* NAME */}
+          <p className="text-sm font-medium">
+            {tool.name}
+          </p>
+
+        </div>
+
       </div>
     ))}
 
@@ -268,35 +356,61 @@ export default function Home() {
 
 </section>
 
-<section id="contact" className="py-24 px-5 text-center">
+<section id="contact" className="py-28 px-5 max-w-5xl mx-auto text-center relative">
 
-  <h2 className="text-3xl md:text-4xl font-bold mb-4">
-    Let’s Work Together
-  </h2>
-
-  <p className="text-gray-400 mb-8">
-    Have a project in mind? Let’s bring your ideas to life.
-  </p>
-
-  {/* SOCIAL */}
-  <div className="flex justify-center gap-6 text-xl mb-8">
-    <a href="#" className="hover:text-purple-400">Instagram</a>
-    <a href="#" className="hover:text-purple-400">LinkedIn</a>
-    <a href="#" className="hover:text-purple-400">TikTok</a>
+  {/* GLOW BACKGROUND */}
+  <div className="absolute inset-0 flex justify-center">
+    <div className="w-[300px] h-[300px] bg-purple-500/20 blur-[120px] rounded-full" />
   </div>
 
-  {/* CTA */}
-  <a
-    href="https://wa.me/6281997837794"
-    className="bg-green-500 px-8 py-3 rounded-xl text-sm hover:scale-105 transition"
-  >
-    Chat via WhatsApp
-  </a>
+  {/* CONTENT */}
+  <div className="relative">
+
+    <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+      Let’s Work Together
+    </h2>
+
+    <p className="text-gray-400 mb-10 max-w-md mx-auto">
+      Have a project in mind? Let’s bring your ideas to life with creative visuals that stand out.
+    </p>
+
+    {/* SOCIAL */}
+    <div className="flex justify-center flex-wrap gap-4 mb-10">
+
+      {[
+        { name: "Instagram", link: "#" },
+        { name: "LinkedIn", link: "#" },
+        { name: "TikTok", link: "#" },
+      ].map((item, i) => (
+        <a
+          key={i}
+          href={item.link}
+          className="px-4 py-2 text-sm rounded-full border border-white/10 bg-white/5 backdrop-blur hover:bg-purple-500/20 transition"
+        >
+          {item.name}
+        </a>
+      ))}
+
+    </div>
+
+    {/* CTA */}
+    <a
+      href="https://wa.me/6281997837794"
+      className="inline-block bg-gradient-to-r from-green-400 to-green-500 px-8 py-3 rounded-xl text-sm font-medium hover:scale-105 transition shadow-lg shadow-green-500/20"
+    >
+      Chat via WhatsApp
+    </a>
+
+  </div>
 
 </section>
-<footer className="py-10 text-center text-xs text-gray-500">
-  Designed & Developed by nannsky
+
+<footer className="py-10 text-center text-xs text-gray-500 border-t border-white/10">
+  <p>
+    © {new Date().getFullYear()} Suciana — Crafted by nannsky
+  </p>
 </footer>
+
     </main>
   );
 }
