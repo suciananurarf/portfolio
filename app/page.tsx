@@ -92,6 +92,20 @@ const menus = [
     });
   };
 
+  // scroll to top
+  const [scrollY, setScrollY] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () =>
+    window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   return (
     
@@ -1840,6 +1854,99 @@ const menus = [
   </div>
 
 </section>
+
+{/* 🔝 BACK TO TOP */}
+<motion.button
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: scrollY > 300 ? 1 : 0 }}
+  transition={{ duration: 0.3 }}
+  onClick={() =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+  className="
+    fixed
+    bottom-6
+    right-6
+    z-50
+    group
+    w-14
+    h-14
+    rounded-full
+    border
+    border-white/40
+    bg-white/70
+    backdrop-blur-2xl
+    shadow-2xl
+    flex
+    items-center
+    justify-center
+    overflow-hidden
+    transition-all
+    duration-500
+    hover:-translate-y-1
+    hover:scale-105
+  "
+>
+
+  {/* GLOW */}
+  <div className="
+    absolute
+    inset-0
+    opacity-0
+    group-hover:opacity-100
+    transition
+    duration-500
+    bg-gradient-to-br
+    from-purple-300/30
+    via-pink-300/20
+    to-cyan-300/30
+    blur-2xl
+  " />
+
+  {/* SHINE */}
+  <div className="
+    absolute
+    top-0
+    left-[-120%]
+    w-[80%]
+    h-full
+    bg-gradient-to-r
+    from-transparent
+    via-white/40
+    to-transparent
+    rotate-12
+    group-hover:left-[140%]
+    transition-all
+    duration-1000
+  " />
+
+  {/* ICON */}
+  <div className="
+    relative
+    z-10
+    w-8
+    h-8
+    rounded-full
+    bg-gradient-to-r
+    from-purple-500
+    via-pink-500
+    to-cyan-500
+    flex
+    items-center
+    justify-center
+    text-white
+    text-sm
+    transition-all
+    duration-300
+    group-hover:-translate-y-1
+  ">
+    ↑
+  </div>
+
+</motion.button>
 
 {/* 🌙 FOOTER */}
 <footer className="relative py-14 md:py-16 px-5 overflow-hidden border-t border-black/5">
