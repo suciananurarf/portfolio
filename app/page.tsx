@@ -69,8 +69,8 @@ export default function Home() {
   /* =========================
      🔢 COUNTER VALUES
   ========================== */
-  const projects = useCounter(played ? 50 : 0);
-  const clients = useCounter(played ? 30 : 0);
+  const projects = useCounter(played ? 100 : 0);
+  const clients = useCounter(played ? 25 : 0);
   const years = useCounter(played ? 4 : 0);
 
   /* =========================
@@ -97,175 +97,584 @@ const menus = [
     
     <main className="bg-white text-black overflow-x-hidden">
 
-      {/* 🔝 NAVBAR */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur border-b border-black/10">
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-5 py-4">
+{/* 🔝 NAVBAR */}
+<nav
+  className="
+    fixed
+    top-0
+    left-0
+    w-full
+    z-50
+    border-b
+    border-black/5
+    bg-white/70
+    backdrop-blur-2xl
+    overflow-hidden
+  "
+>
 
-          <h1 className="text-sm font-semibold">
-            Suciana Nur Arifandy
-          </h1>
+  {/* 🌈 NAV GLOW */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-          {/* DESKTOP */}
-          <div className="hidden md:flex gap-6 text-sm">
-            {menus.map((m, i) => (
-              <a key={i} href={m.link} className="hover:text-purple-400 transition">
-                {m.name}
-              </a>
-            ))}
-          </div>
+    {/* PURPLE */}
+    <div className="absolute top-[-40px] left-[10%] w-[180px] h-[180px] bg-purple-300/20 blur-[80px] rounded-full animate-glowFloat" />
 
-          {/* MOBILE BUTTON */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden z-50"
-          >
-            {open ? <X /> : <Menu />}
-          </button>
+    {/* PINK */}
+    <div
+      className="absolute top-[-60px] right-[10%] w-[160px] h-[160px] bg-pink-300/20 blur-[80px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
 
-        </div>
-      </nav>
+  </div>
 
-      {/* 📱 MOBILE MENU */}
-      <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center gap-8 text-xl transition-all duration-300 ${
-          open ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      >
-        {menus.map((m, i) => (
-          <a
-            key={i}
-            href={m.link}
-            onClick={() => setOpen(false)}
-            className="hover:text-purple-400 transition"
-          >
+  <div className="max-w-7xl mx-auto relative z-10 flex justify-between items-center px-5 md:px-8 py-4">
+
+    {/* LOGO */}
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+    >
+
+      {/* GLOW */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 via-pink-400/20 to-cyan-400/20 blur-xl rounded-full" />
+
+      {/* TEXT */}
+      <h1 className="relative text-sm md:text-base font-black tracking-wide bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+        Suciana Nur Arifandy
+      </h1>
+
+    </motion.div>
+
+    {/* DESKTOP MENU */}
+    <div className="hidden md:flex items-center gap-2">
+
+      {menus.map((m, i) => (
+        <motion.a
+          key={i}
+          href={m.link}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: i * 0.05,
+          }}
+          className="
+            group
+            relative
+            overflow-hidden
+            px-5
+            py-2.5
+            rounded-full
+            text-sm
+            font-medium
+            text-gray-600
+            transition-all
+            duration-300
+            hover:text-black
+          "
+        >
+
+          {/* HOVER BG */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 rounded-full bg-gradient-to-r from-purple-200/40 via-pink-200/30 to-cyan-200/40 blur-xl" />
+
+          {/* TEXT */}
+          <span className="relative z-10">
             {m.name}
-          </a>
-        ))}
+          </span>
+
+        </motion.a>
+      ))}
+
+    </div>
+
+    {/* MOBILE BUTTON */}
+    <motion.button
+      whileTap={{ scale: 0.92 }}
+      onClick={() => setOpen(!open)}
+      className="
+        md:hidden
+        relative
+        z-50
+        w-11
+        h-11
+        rounded-full
+        border
+        border-black/10
+        bg-white/80
+        backdrop-blur-xl
+        flex
+        items-center
+        justify-center
+        shadow-lg
+      "
+    >
+
+      {/* GLOW */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-300/20 via-pink-300/20 to-cyan-300/20 blur-xl rounded-full" />
+
+      {/* ICON */}
+      <div className="relative z-10">
+        {open ? <X size={20} /> : <Menu size={20} />}
       </div>
+
+    </motion.button>
+
+  </div>
+
+</nav>
+
+{/* 📱 MOBILE MENU */}
+<div
+  className={`
+    fixed
+    inset-0
+    z-40
+    flex
+    flex-col
+    items-center
+    justify-center
+    gap-6
+    bg-white/80
+    backdrop-blur-3xl
+    transition-all
+    duration-500
+    overflow-hidden
+    ${
+      open
+        ? "opacity-100 visible"
+        : "opacity-0 invisible"
+    }
+  `}
+>
+
+  {/* BACKGROUND */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
+    {/* PURPLE */}
+    <div className="absolute top-[-100px] left-[-100px] w-[280px] h-[280px] bg-purple-300/30 blur-[120px] rounded-full animate-glowFloat" />
+
+    {/* PINK */}
+    <div
+      className="absolute bottom-[-100px] right-[-100px] w-[260px] h-[260px] bg-pink-300/30 blur-[120px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* CYAN */}
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[220px] h-[220px] bg-cyan-200/20 blur-[120px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
+
+  </div>
+
+  {/* MENU ITEMS */}
+  {menus.map((m, i) => (
+    <motion.a
+      key={i}
+      href={m.link}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: open ? 1 : 0,
+        y: open ? 0 : 20,
+      }}
+      transition={{
+        delay: i * 0.05,
+      }}
+      onClick={() => setOpen(false)}
+      className="
+        group
+        relative
+        text-2xl
+        md:text-3xl
+        font-black
+        tracking-wide
+        text-gray-700
+        transition-all
+        duration-300
+        hover:scale-110
+      "
+    >
+
+      {/* GLOW */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 blur-xl bg-gradient-to-r from-purple-300/20 via-pink-300/20 to-cyan-300/20" />
+
+      {/* TEXT */}
+      <span className="relative z-10 group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:via-pink-500 group-hover:to-cyan-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+        {m.name}
+      </span>
+
+    </motion.a>
+  ))}
+
+</div>
 
 {/* 🚀 HERO */}
 <section
   id="home"
-  className="relative min-h-screen flex items-center justify-center overflow-hidden px-5"
+  className="
+    relative
+    min-h-screen
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    px-5
+    pt-28
+    bg-[#faf7ff]
+  "
 >
 
-  {/* BACKGROUND GLOW */}
+  {/* 🌈 COLORFUL BACKGROUND */}
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-    <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-200/40 blur-[140px] rounded-full" />
+    {/* PURPLE */}
+    <div className="
+      absolute
+      top-[-220px]
+      left-1/2
+      -translate-x-1/2
+      w-[900px]
+      h-[900px]
+      rounded-full
+      bg-gradient-to-br
+      from-violet-300/40
+      via-fuchsia-300/30
+      to-pink-300/20
+      blur-[180px]
+      animate-pulseGradient
+    " />
 
-    <div className="absolute bottom-[-200px] right-[-120px] w-[500px] h-[500px] bg-pink-200/30 blur-[140px] rounded-full" />
+    {/* CYAN */}
+    <div
+      className="
+        absolute
+        left-[-180px]
+        top-[20%]
+        w-[420px]
+        h-[420px]
+        rounded-full
+        bg-cyan-300/30
+        blur-[140px]
+        animate-glowFloat
+      "
+    />
+
+    {/* PINK */}
+    <div
+      className="
+        absolute
+        right-[-180px]
+        bottom-[10%]
+        w-[420px]
+        h-[420px]
+        rounded-full
+        bg-pink-300/30
+        blur-[140px]
+        animate-glowFloat
+      "
+      style={{
+        animationDelay: "3s",
+      }}
+    />
+
+    {/* BLUE */}
+    <div
+      className="
+        absolute
+        left-[20%]
+        bottom-[-100px]
+        w-[260px]
+        h-[260px]
+        rounded-full
+        bg-sky-300/20
+        blur-[120px]
+        animate-pulseGradient
+      "
+      style={{
+        animationDelay: "4s",
+      }}
+    />
+
+    {/* ORANGE */}
+    <div
+      className="
+        absolute
+        right-[15%]
+        top-[10%]
+        w-[220px]
+        h-[220px]
+        rounded-full
+        bg-orange-200/20
+        blur-[100px]
+        animate-glowFloat
+      "
+      style={{
+        animationDelay: "5s",
+      }}
+    />
 
   </div>
 
-  {/* GRID PATTERN */}
+  {/* GRID */}
   <div
     className="absolute inset-0 opacity-[0.03]"
     style={{
       backgroundImage:
         "linear-gradient(to right, black 1px, transparent 1px), linear-gradient(to bottom, black 1px, transparent 1px)",
-      backgroundSize: "60px 60px",
+      backgroundSize: "70px 70px",
     }}
   />
 
   {/* CONTENT */}
-  <div className="relative z-10 max-w-5xl mx-auto text-center">
+  <div className="relative z-10 max-w-7xl mx-auto text-center">
 
-    {/* LABEL */}
-    <motion.p
+    {/* BADGE */}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-xs md:text-sm tracking-[5px] text-purple-500 font-medium mb-6"
+      transition={{ duration: 0.6 }}
+      className="mb-10 flex justify-center"
     >
-      CREATIVE DESIGNER • VISUAL EDITOR
-    </motion.p>
+
+      <div className="
+        relative
+        overflow-hidden
+        rounded-full
+        border
+        border-white/50
+        bg-white/60
+        backdrop-blur-2xl
+        px-6
+        py-3
+        shadow-xl
+        animate-floatingSlow
+      ">
+
+        {/* GLOW */}
+        <div className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-violet-300/20
+          via-pink-300/20
+          to-cyan-300/20
+          blur-2xl
+          animate-pulseGradient
+        " />
+
+        <div className="relative z-10 flex items-center gap-3">
+
+          <div className="flex gap-1">
+
+            <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+
+            <span
+              className="w-2 h-2 rounded-full bg-pink-400 animate-pulse"
+              style={{
+                animationDelay: "0.3s",
+              }}
+            />
+
+            <span
+              className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"
+              style={{
+                animationDelay: "0.6s",
+              }}
+            />
+
+          </div>
+
+          <span className="text-xs md:text-sm tracking-[4px] font-medium text-gray-700">
+            CREATIVE DESIGNER • VISUAL STORYTELLER
+          </span>
+
+        </div>
+
+      </div>
+
+    </motion.div>
 
     {/* TITLE */}
     <motion.h1
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      className="text-5xl sm:text-6xl md:text-8xl font-black leading-[0.95] tracking-[-3px]"
+      transition={{ duration: 0.9 }}
+      className="
+        text-6xl
+        sm:text-7xl
+        md:text-[120px]
+        lg:text-[150px]
+        font-black
+        leading-[0.88]
+        tracking-[-6px]
+      "
     >
 
-      Suciana Nur
+      <span className="block text-[#1a1a1a]">
+        Suciana
+      </span>
 
-      <span className="block mt-2 bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
-        Arifandy
+      <span className="
+        block
+        mt-2
+        bg-gradient-to-r
+        from-violet-500
+        via-pink-500
+        to-cyan-500
+        bg-clip-text
+        text-transparent
+      ">
+        Nur Arifandy
       </span>
 
     </motion.h1>
 
-    {/* SUBTITLE */}
+    {/* LINE */}
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "160px" }}
+      transition={{
+        duration: 1,
+        delay: 0.5,
+      }}
+      className="
+        h-[3px]
+        mx-auto
+        mt-10
+        rounded-full
+        bg-gradient-to-r
+        from-violet-400
+        via-pink-400
+        to-cyan-400
+      "
+    />
+
+    {/* DESC */}
     <motion.p
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="mt-8 text-gray-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+      transition={{ duration: 1 }}
+      className="
+        mt-10
+        max-w-3xl
+        mx-auto
+        text-base
+        md:text-xl
+        leading-relaxed
+        text-gray-600
+      "
     >
-      Turning ideas into visually impactful designs through
-      branding, social media visuals, advertising content,
-      and modern creative storytelling.
+      Creating emotionally engaging visuals through
+      branding, social media design, advertising campaigns,
+      and modern digital storytelling.
     </motion.p>
 
     {/* BUTTONS */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9 }}
-      className="mt-12 flex flex-wrap justify-center gap-4"
+      transition={{
+        duration: 1,
+        delay: 0.2,
+      }}
+      className="
+        mt-14
+        flex
+        flex-wrap
+        justify-center
+        gap-5
+      "
     >
 
+      {/* PRIMARY */}
       <a
-        href="#gallery"
-        className="px-8 py-4 rounded-2xl bg-black text-white text-sm font-medium hover:scale-105 transition-all shadow-xl"
+        href="#about"
+        className="
+          group
+          relative
+          overflow-hidden
+          rounded-full
+          px-10
+          py-5
+          bg-gradient-to-r
+          from-violet-500
+          via-pink-500
+          to-cyan-500
+          text-white
+          font-semibold
+          text-sm
+          md:text-base
+          shadow-2xl
+          transition-all
+          duration-500
+          hover:scale-[1.03]
+          hover:-translate-y-1
+        "
       >
-        View Portfolio
+
+        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+        <span className="relative z-10 flex items-center gap-3">
+
+          Explore
+
+          <span className="group-hover:translate-x-1 transition">
+            →
+          </span>
+
+        </span>
+
       </a>
 
+      {/* SECONDARY */}
       <a
         href="#contact"
-        className="px-8 py-4 rounded-2xl border border-black/10 bg-white/70 backdrop-blur text-sm font-medium hover:bg-black hover:text-white transition-all"
+        className="
+          group
+          relative
+          overflow-hidden
+          rounded-full
+          border
+          border-white/50
+          bg-white/60
+          backdrop-blur-2xl
+          px-10
+          py-5
+          text-sm
+          md:text-base
+          font-semibold
+          text-gray-700
+          transition-all
+          duration-500
+          hover:-translate-y-1
+          hover:shadow-2xl
+        "
       >
-        Hire Me
+
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-violet-300/20 via-pink-300/20 to-cyan-300/20 blur-2xl" />
+
+        <span className="relative z-10 flex items-center gap-3">
+
+          Let’s Work Together
+
+          <span className="group-hover:translate-x-1 transition">
+            ↗
+          </span>
+
+        </span>
+
       </a>
 
     </motion.div>
 
-    {/* STATS */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5 }}
-      className="mt-20 flex justify-center gap-10 md:gap-20"
-    >
-
-      {[
-        { num: "50+", label: "Projects" },
-        { num: "30+", label: "Clients" },
-        { num: "4+", label: "Years" },
-      ].map((item, i) => (
-        <div key={i}>
-
-          <h3 className="text-2xl md:text-4xl font-bold">
-            {item.num}
-          </h3>
-
-          <p className="text-gray-500 text-sm mt-1">
-            {item.label}
-          </p>
-
-        </div>
-      ))}
-
-    </motion.div>
-
-  </div>
-
-  {/* SCROLL */}
-  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-400 text-sm animate-bounce">
-    Scroll ↓
   </div>
 
 </section>
@@ -274,19 +683,36 @@ const menus = [
 <section
   ref={ref}
   id="about"
-  className="relative py-32 px-5 scroll-mt-24 overflow-hidden"
+  className="relative py-28 md:py-36 px-5 scroll-mt-24 overflow-hidden"
 >
 
-  {/* BACKGROUND LIGHT */}
-  <div className="absolute inset-0 pointer-events-none">
+  {/* 🌈 ANIMATED BACKGROUND */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-    <div className="absolute top-20 left-[-120px] w-[320px] h-[320px] bg-purple-200/30 blur-[120px] rounded-full" />
+    {/* PURPLE */}
+    <div
+      className="absolute top-10 left-[-120px] w-[320px] h-[320px] bg-purple-300/40 blur-[120px] rounded-full animate-glowFloat"
+    />
 
-    <div className="absolute bottom-0 right-[-100px] w-[260px] h-[260px] bg-pink-200/30 blur-[120px] rounded-full" />
+    {/* PINK */}
+    <div
+      className="absolute bottom-0 right-[-100px] w-[260px] h-[260px] bg-pink-300/40 blur-[120px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* BLUE */}
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[240px] h-[240px] bg-cyan-200/30 blur-[120px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
 
   </div>
 
-  <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
+  <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 md:gap-20 items-center relative z-10">
 
     {/* IMAGE SIDE */}
     <motion.div
@@ -297,31 +723,81 @@ const menus = [
       className="relative"
     >
 
-      {/* IMAGE */}
-      <div className="relative overflow-hidden rounded-[36px]">
+      {/* GLOW */}
+      <div className="absolute -inset-10 bg-gradient-to-r from-purple-300/20 via-pink-300/20 to-cyan-300/20 blur-3xl rounded-full animate-pulseGradient" />
 
+      {/* IMAGE WRAPPER */}
+      <div className="relative overflow-hidden rounded-[36px] animate-floatingSlow shadow-2xl">
+
+        {/* IMAGE */}
         <img
           src="/gallery/profil.jpg"
-          className="w-full h-[450px] md:h-[650px] object-cover"
+          className="w-full h-[420px] md:h-[650px] object-cover scale-[1.01]"
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
       </div>
 
-      {/* FLOAT CARD */}
-      <div className="absolute -bottom-6 right-6 bg-white/90 backdrop-blur-xl border border-black/10 rounded-3xl px-6 py-5 shadow-2xl">
+      {/* EXPERIENCE CARD */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
+        className="
+          absolute
+          -bottom-6
+          right-4
+          md:right-6
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/30
+          backdrop-blur-2xl
+          px-6
+          py-5
+          shadow-2xl
+          bg-white/70
+          animate-floatingSlow
+        "
+      >
 
-        <p className="text-xs uppercase tracking-[3px] text-gray-400 mb-1">
-          Experience
-        </p>
+        {/* MOVING GLOW */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-400/30 via-pink-400/20 to-cyan-300/30 blur-2xl animate-glowFloat" />
 
-        <h3 className="text-2xl font-bold">
-          4+ Years
-        </h3>
+        {/* LIGHT */}
+        <div className="absolute inset-[1px] rounded-[27px] bg-white/80 backdrop-blur-2xl" />
 
-      </div>
+        {/* CONTENT */}
+        <div className="relative z-10">
+
+          <p className="text-[10px] uppercase tracking-[4px] text-gray-500 mb-2">
+            Experience
+          </p>
+
+          <h3 className="text-3xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+            4+ Years
+          </h3>
+
+          <div className="mt-2 flex gap-1">
+
+            <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            <span
+              className="w-2 h-2 rounded-full bg-pink-400 animate-pulse"
+              style={{ animationDelay: "0.3s" }}
+            />
+            <span
+              className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"
+              style={{ animationDelay: "0.6s" }}
+            />
+
+          </div>
+
+        </div>
+
+      </motion.div>
 
     </motion.div>
 
@@ -333,18 +809,18 @@ const menus = [
       viewport={{ once: true }}
     >
 
-      {/* SMALL LABEL */}
+      {/* LABEL */}
       <p className="text-sm tracking-[5px] text-purple-500 font-medium mb-5">
         ABOUT ME
       </p>
 
-      {/* BIG TITLE */}
-      <h2 className="text-4xl md:text-6xl font-black leading-[1.05] tracking-[-2px] mb-8">
+      {/* TITLE */}
+      <h2 className="text-4xl md:text-6xl font-black leading-[1.02] tracking-[-2px] mb-8">
 
         Designing
         <br />
 
-        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
           Visual Experiences
         </span>
 
@@ -391,16 +867,42 @@ const menus = [
         ].map((item, i) => (
           <div
             key={i}
-            className="group rounded-3xl border border-black/10 bg-white/70 backdrop-blur-xl p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+            style={{
+              animationDelay: `${i * 0.4}s`,
+            }}
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-[28px]
+              border
+              border-black/10
+              bg-white/70
+              backdrop-blur-xl
+              p-6
+              transition-all
+              duration-500
+              hover:-translate-y-2
+              hover:shadow-2xl
+              animate-floatingSlow
+            "
           >
 
-            <h3 className="text-3xl md:text-4xl font-black mb-2 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              {item.value}
-            </h3>
+            {/* GLOW */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-300/20 via-pink-300/10 to-cyan-300/20 opacity-70 blur-2xl animate-pulseGradient" />
 
-            <p className="text-sm text-gray-500">
-              {item.label}
-            </p>
+            {/* CONTENT */}
+            <div className="relative z-10">
+
+              <h3 className="text-3xl md:text-4xl font-black mb-2 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+                {item.value}
+              </h3>
+
+              <p className="text-sm text-gray-500">
+                {item.label}
+              </p>
+
+            </div>
 
           </div>
         ))}
@@ -452,18 +954,95 @@ const menus = [
 
       </div>
 
-      <Link
-        href="/gallery"
-        className="group flex items-center gap-2 text-sm text-gray-600 hover:text-black transition"
-      >
+     <Link
+  href="/gallery"
+  className="
+    group
+    relative
+    inline-flex
+    items-center
+    gap-3
+    overflow-hidden
+    rounded-full
+    border
+    border-white/40
+    bg-white/70
+    backdrop-blur-2xl
+    px-6
+    py-3
+    text-sm
+    font-semibold
+    text-gray-700
+    shadow-lg
+    transition-all
+    duration-500
+    hover:-translate-y-1
+    hover:shadow-2xl
+  "
+>
 
-        <span>View All Projects</span>
+  {/* GLOW */}
+  <div className="
+    absolute
+    inset-0
+    opacity-0
+    group-hover:opacity-100
+    transition
+    duration-500
+    bg-gradient-to-r
+    from-purple-300/20
+    via-pink-300/20
+    to-cyan-300/20
+    blur-2xl
+  " />
 
-        <span className="group-hover:translate-x-1 transition">
-          →
-        </span>
+  {/* SHINE */}
+  <div className="
+    absolute
+    top-0
+    left-[-120%]
+    w-[80%]
+    h-full
+    bg-gradient-to-r
+    from-transparent
+    via-white/40
+    to-transparent
+    rotate-12
+    group-hover:left-[140%]
+    transition-all
+    duration-1000
+  " />
 
-      </Link>
+  {/* TEXT */}
+  <span className="relative z-10">
+    View All Projects
+  </span>
+
+  {/* ICON */}
+  <div className="
+    relative
+    z-10
+    w-7
+    h-7
+    rounded-full
+    bg-gradient-to-r
+    from-purple-500
+    via-pink-500
+    to-cyan-500
+    flex
+    items-center
+    justify-center
+    text-white
+    text-xs
+    transition-all
+    duration-300
+    group-hover:translate-x-1
+    group-hover:scale-110
+  ">
+    →
+  </div>
+
+</Link>
 
     </div>
 
@@ -531,44 +1110,62 @@ const menus = [
 
 </section>
 
-{/* EXPERIENCE */}
+{/* 🚀 EXPERIENCE */}
 <section
   id="experience"
-  className="relative py-32 px-5 overflow-hidden"
+  className="relative py-32 md:py-40 px-5 overflow-hidden"
 >
 
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 pointer-events-none">
+  {/* 🌈 BACKGROUND AMBIENT */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-    <div className="absolute top-0 left-[-100px] w-[300px] h-[300px] bg-purple-200/30 blur-[120px] rounded-full" />
+    {/* PURPLE */}
+    <div className="absolute top-10 left-[-120px] w-[320px] h-[320px] bg-purple-300/30 blur-[120px] rounded-full animate-glowFloat" />
 
-    <div className="absolute bottom-0 right-[-120px] w-[260px] h-[260px] bg-pink-200/20 blur-[120px] rounded-full" />
+    {/* PINK */}
+    <div
+      className="absolute bottom-0 right-[-120px] w-[280px] h-[280px] bg-pink-300/30 blur-[120px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* CYAN */}
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[220px] h-[220px] bg-cyan-200/20 blur-[120px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
 
   </div>
 
   <div className="max-w-6xl mx-auto relative z-10">
 
     {/* HEADER */}
-    <div className="text-center mb-24">
+    <div className="text-center mb-20 md:mb-24">
 
-      <p className="text-sm tracking-[5px] text-purple-500 font-medium mb-4">
+      {/* LABEL */}
+      <p className="text-xs md:text-sm tracking-[5px] text-purple-500 font-medium mb-5">
         CAREER JOURNEY
       </p>
 
-      <h2 className="text-4xl md:text-6xl font-black tracking-[-2px] leading-[1.05] mb-6">
+      {/* TITLE */}
+      <h2 className="text-4xl md:text-7xl font-black tracking-[-2px] leading-[1.02] mb-6">
 
         Professional
         <br />
 
-        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
           Experience
         </span>
 
       </h2>
 
-      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed">
-        My professional journey in branding, visual communication,
-        creative production, and digital design across multiple industries.
+      {/* DESC */}
+      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-base md:text-lg">
+        A journey through branding, visual communication,
+        advertising, creative production, and modern digital design.
       </p>
 
     </div>
@@ -577,107 +1174,163 @@ const menus = [
     <div className="relative">
 
       {/* LINE */}
-      <div className="absolute left-4 top-0 w-[2px] h-full bg-gradient-to-b from-purple-400 via-purple-200 to-transparent" />
+      <div className="absolute left-[15px] md:left-1/2 md:-translate-x-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-purple-400/60 via-pink-400/20 to-transparent" />
 
-      <div className="space-y-10">
+      <div className="space-y-12 md:space-y-20">
 
         {[
           {
             role: "Staf Graphic Designer",
             company: "PT Chandra Karya Furniture",
             duration: "2021 — Present",
-            desc: "Designed promotional campaigns, digital advertisements, social media visuals, and branding assets to strengthen company identity and customer engagement.",
+            desc: "Designed marketing visuals, banners, promotional campaigns, social media content, and branding assets for furniture & retail campaigns.",
             current: true,
           },
           {
             role: "Graphic Designer",
             company: "PT SQINPRO Kosmetika Industri",
             duration: "2021",
-            desc: "Created packaging concepts, cosmetic branding visuals, and marketing materials aligned with product identity and target audience.",
+            desc: "Created packaging concepts, cosmetic branding visuals, and promotional materials aligned with modern beauty industry trends.",
           },
           {
             role: "Social Media Advertising",
             company: "Lynk Digital Agency",
             duration: "2018 — 2022",
-            desc: "Managed social media advertising visuals, optimized engagement strategies, and developed creative content for multiple digital campaigns.",
+            desc: "Managed advertising visuals, campaign creatives, and social media engagement strategies for multiple brands and clients.",
           },
           {
             role: "Staf Produksi",
             company: "Prenadamedia Group",
             duration: "2017 — 2018",
-            desc: "Handled publishing production workflows and maintained quality standards for printed media and editorial materials.",
+            desc: "Handled production workflows and quality control for printed publication materials and publishing assets.",
           },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            viewport={{ once: true }}
-            className="relative pl-16"
-          >
+        ].map((item, i) => {
 
-            {/* DOT */}
-            <div className="absolute left-0 top-5">
+          const left = i % 2 === 0;
 
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white border border-purple-300 shadow-lg">
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: i * 0.08,
+              }}
+              viewport={{ once: true }}
+              className={`
+                relative
+                flex
+                ${left ? "md:justify-start" : "md:justify-end"}
+              `}
+            >
 
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
+              {/* DOT */}
+              <div className="absolute left-[15px] md:left-1/2 md:-translate-x-1/2 top-10 z-20">
 
-              </div>
+                <div className="relative flex items-center justify-center">
 
-            </div>
+                  {/* OUTER GLOW */}
+                  <div className="absolute w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 blur-xl opacity-50 animate-pulseGradient" />
 
-            {/* CARD */}
-            <div className="group relative overflow-hidden rounded-[32px] border border-black/10 bg-white/70 backdrop-blur-xl p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+                  {/* MAIN */}
+                  <div className="relative w-8 h-8 rounded-full bg-white border border-white/50 flex items-center justify-center shadow-xl">
 
-              {/* HOVER GLOW */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-purple-100/40 to-pink-100/20 pointer-events-none" />
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 animate-pulse" />
 
-              <div className="relative z-10">
-
-                {/* TOP */}
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5 mb-6">
-
-                  <div>
-
-                    <div className="flex items-center gap-3 flex-wrap mb-2">
-
-                      <h3 className="text-2xl font-bold tracking-[-0.5px]">
-                        {item.role}
-                      </h3>
-
-                      {item.current && (
-                        <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-green-100 text-green-600 border border-green-200">
-                          Current Position
-                        </span>
-                      )}
-
-                    </div>
-
-                    <p className="text-purple-500 font-medium">
-                      {item.company}
-                    </p>
-
-                  </div>
-
-                  <div className="text-sm text-gray-400 whitespace-nowrap">
-                    {item.duration}
                   </div>
 
                 </div>
 
-                {/* DESCRIPTION */}
-                <p className="text-gray-600 leading-relaxed">
-                  {item.desc}
-                </p>
+              </div>
+
+              {/* CARD */}
+              <div
+                style={{
+                  animationDelay: `${i * 0.5}s`,
+                }}
+                className={`
+                  group
+                  relative
+                  ml-14
+                  md:ml-0
+                  w-full
+                  md:w-[46%]
+                  overflow-hidden
+                  rounded-[32px]
+                  border
+                  border-black/10
+                  bg-white/70
+                  backdrop-blur-2xl
+                  p-7
+                  md:p-8
+                  transition-all
+                  duration-500
+                  hover:-translate-y-2
+                  hover:shadow-2xl
+                  animate-floatingSlow
+                `}
+              >
+
+                {/* GLOW */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-300/20 via-pink-300/10 to-cyan-300/20 opacity-60 blur-3xl group-hover:opacity-100 transition duration-700" />
+
+                {/* SHINE */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
+
+                  <div className="absolute top-0 left-[-120%] w-[80%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 group-hover:left-[140%] transition-all duration-1000" />
+
+                </div>
+
+                {/* CONTENT */}
+                <div className="relative z-10">
+
+                  {/* TOP */}
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
+
+                    <div>
+
+                      {/* ROLE */}
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+
+                        <h3 className="text-xl md:text-2xl font-bold leading-tight">
+                          {item.role}
+                        </h3>
+
+                        {item.current && (
+                          <span className="px-3 py-1 rounded-full text-[10px] font-semibold tracking-[2px] uppercase bg-gradient-to-r from-green-400 to-emerald-500 text-white shadow-lg shadow-green-400/30 animate-pulse">
+                            Current
+                          </span>
+                        )}
+
+                      </div>
+
+                      {/* COMPANY */}
+                      <p className="text-sm text-purple-500 font-medium">
+                        {item.company}
+                      </p>
+
+                    </div>
+
+                    {/* DURATION */}
+                    <div className="text-xs tracking-[2px] uppercase text-gray-400 whitespace-nowrap">
+                      {item.duration}
+                    </div>
+
+                  </div>
+
+                  {/* DESC */}
+                  <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+                    {item.desc}
+                  </p>
+
+                </div>
 
               </div>
 
-            </div>
-
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
 
       </div>
 
@@ -687,115 +1340,224 @@ const menus = [
 
 </section>
 
-{/* TOOLS */}
+{/* 🛠 TOOLS */}
 <section
   id="tools"
-  className="relative py-32 px-5 overflow-hidden"
+  className="relative py-32 md:py-40 px-5 overflow-hidden"
 >
 
-  {/* BACKGROUND GLOW */}
-  <div className="absolute inset-0 pointer-events-none">
+  {/* 🌈 AMBIENT BACKGROUND */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-    <div className="absolute top-0 left-[-100px] w-[260px] h-[260px] bg-purple-200/30 blur-[120px] rounded-full" />
+    {/* PURPLE */}
+    <div className="absolute top-0 left-[-120px] w-[320px] h-[320px] bg-purple-300/30 blur-[120px] rounded-full animate-glowFloat" />
 
-    <div className="absolute bottom-0 right-[-80px] w-[240px] h-[240px] bg-pink-200/20 blur-[120px] rounded-full" />
+    {/* PINK */}
+    <div
+      className="absolute bottom-0 right-[-120px] w-[280px] h-[280px] bg-pink-300/30 blur-[120px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* CYAN */}
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[240px] h-[240px] bg-cyan-200/20 blur-[120px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
 
   </div>
 
-  <div className="max-w-6xl mx-auto relative z-10">
+  <div className="max-w-7xl mx-auto relative z-10">
 
     {/* HEADER */}
-    <div className="text-center mb-20">
+    <div className="text-center mb-20 md:mb-24">
 
-      <p className="text-sm tracking-[5px] text-purple-500 font-medium mb-4">
+      {/* LABEL */}
+      <p className="text-xs md:text-sm tracking-[5px] text-purple-500 font-medium mb-5">
         SOFTWARE STACK
       </p>
 
-      <h2 className="text-4xl md:text-6xl font-black tracking-[-2px] leading-[1.05] mb-6">
+      {/* TITLE */}
+      <h2 className="text-4xl md:text-7xl font-black tracking-[-2px] leading-[1.02] mb-6">
 
         Creative
         <br />
 
-        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
           Tools & Software
         </span>
 
       </h2>
 
-      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed">
-        Professional creative tools I use for branding,
-        digital campaigns, visual storytelling,
-        and modern content creation.
+      {/* DESC */}
+      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-base md:text-lg">
+        Professional tools I use to create branding,
+        digital campaigns, social media visuals,
+        and modern visual experiences.
       </p>
 
     </div>
 
     {/* GRID */}
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-7">
 
       {[
         {
           name: "Adobe Photoshop",
           icon: <TbBrandAdobePhotoshop />,
-          glow: "from-cyan-400 to-blue-500",
-          hover: "group-hover:text-cyan-500",
+          glow: "from-cyan-400 via-blue-400 to-sky-500",
+          text: "group-hover:text-cyan-500",
         },
         {
           name: "Adobe Illustrator",
           icon: <TbBrandAdobeIllustrator />,
-          glow: "from-orange-400 to-yellow-500",
-          hover: "group-hover:text-orange-500",
+          glow: "from-orange-400 via-amber-400 to-yellow-500",
+          text: "group-hover:text-orange-500",
         },
         {
           name: "Adobe InDesign",
           icon: <TbBrandAdobeIndesign />,
-          glow: "from-pink-400 to-rose-500",
-          hover: "group-hover:text-pink-500",
+          glow: "from-pink-400 via-rose-400 to-fuchsia-500",
+          text: "group-hover:text-pink-500",
         },
         {
           name: "Canva",
           icon: <TbPalette />,
-          glow: "from-purple-400 to-fuchsia-500",
-          hover: "group-hover:text-purple-500",
+          glow: "from-violet-400 via-purple-400 to-fuchsia-500",
+          text: "group-hover:text-purple-500",
         },
         {
           name: "CapCut",
           icon: <TbScissors />,
-          glow: "from-gray-300 to-gray-500",
-          hover: "group-hover:text-black",
+          glow: "from-gray-300 via-gray-400 to-gray-500",
+          text: "group-hover:text-black",
         },
       ].map((tool, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: i * 0.08 }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.08,
+          }}
           viewport={{ once: true }}
           className="group relative"
         >
 
           {/* CARD */}
-          <div className="relative overflow-hidden rounded-[32px] border border-black/10 bg-white/70 backdrop-blur-xl p-8 h-full flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+          <div
+            style={{
+              animationDelay: `${i * 0.4}s`,
+            }}
+            className="
+              relative
+              overflow-hidden
+              rounded-[32px]
+              border
+              border-black/10
+              bg-white/70
+              backdrop-blur-2xl
+              p-7
+              md:p-8
+              h-full
+              flex
+              flex-col
+              items-center
+              justify-center
+              transition-all
+              duration-500
+              hover:-translate-y-3
+              hover:shadow-2xl
+              animate-floatingSlow
+            "
+          >
 
-            {/* HOVER GLOW */}
+            {/* MOVING GLOW */}
             <div
-              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br ${tool.glow} blur-3xl`}
+              className={`
+                absolute
+                inset-0
+                opacity-70
+                blur-3xl
+                bg-gradient-to-br
+                ${tool.glow}
+                animate-glowMove
+              `}
             />
 
-            {/* LIGHT OVERLAY */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent opacity-60" />
+            {/* SHINE */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
+
+              <div className="absolute top-0 left-[-120%] w-[80%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 group-hover:left-[140%] transition-all duration-1000" />
+
+            </div>
+
+            {/* GLASS LAYER */}
+            <div className="absolute inset-[1px] rounded-[31px] bg-white/80 backdrop-blur-2xl" />
+
+            {/* PULSE ORB */}
+            <div
+              className={`
+                absolute
+                w-28
+                h-28
+                rounded-full
+                opacity-30
+                blur-2xl
+                bg-gradient-to-br
+                ${tool.glow}
+                animate-pulseGradient
+              `}
+            />
 
             {/* ICON */}
             <div
-              className={`relative z-10 text-6xl mb-6 text-black transition-all duration-500 ${tool.hover} group-hover:scale-110`}
+              className={`
+                relative
+                z-10
+                text-5xl
+                md:text-6xl
+                mb-5
+                text-black
+                transition-all
+                duration-500
+                ${tool.text}
+                group-hover:scale-125
+                group-hover:rotate-6
+              `}
             >
               {tool.icon}
             </div>
 
             {/* NAME */}
-            <p className="relative z-10 text-sm md:text-base font-semibold tracking-wide text-center">
+            <p className="relative z-10 text-sm md:text-base font-semibold text-center leading-tight">
               {tool.name}
             </p>
+
+            {/* MINI DOTS */}
+            <div className="relative z-10 flex gap-1 mt-4">
+
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"
+                style={{
+                  animationDelay: "0.3s",
+                }}
+              />
+
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"
+                style={{
+                  animationDelay: "0.6s",
+                }}
+              />
+
+            </div>
 
           </div>
 
@@ -811,46 +1573,79 @@ const menus = [
 {/* ✨ CONTACT */}
 <section
   id="contact"
-  className="relative py-36 px-5 overflow-hidden"
+  className="relative py-36 md:py-44 px-5 overflow-hidden"
 >
 
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 pointer-events-none">
+  {/* 🌈 AMBIENT BACKGROUND */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-    <div className="absolute top-[-120px] left-[-80px] w-[320px] h-[320px] bg-purple-200/30 blur-[140px] rounded-full" />
+    {/* PURPLE */}
+    <div className="absolute top-[-120px] left-[-100px] w-[340px] h-[340px] bg-purple-300/30 blur-[140px] rounded-full animate-glowFloat" />
 
-    <div className="absolute bottom-[-100px] right-[-80px] w-[300px] h-[300px] bg-pink-200/20 blur-[140px] rounded-full" />
+    {/* PINK */}
+    <div
+      className="absolute bottom-[-120px] right-[-100px] w-[320px] h-[320px] bg-pink-300/30 blur-[140px] rounded-full animate-pulseGradient"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* CYAN */}
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[240px] h-[240px] bg-cyan-200/20 blur-[140px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
 
   </div>
 
   <div className="max-w-5xl mx-auto relative z-10 text-center">
 
-    {/* SMALL LABEL */}
-    <p className="text-sm tracking-[5px] text-purple-500 font-medium mb-5">
+    {/* LABEL */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="text-xs md:text-sm tracking-[5px] text-purple-500 font-medium mb-5"
+    >
       CONTACT & COLLABORATION
-    </p>
+    </motion.p>
 
     {/* TITLE */}
-    <h2 className="text-4xl md:text-7xl font-black tracking-[-3px] leading-[1.05] mb-8">
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      className="text-4xl md:text-7xl font-black tracking-[-3px] leading-[1.02] mb-8"
+    >
 
       Let’s Create
       <br />
 
-      <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent">
+      <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent animate-pulseGradient">
         Something Amazing
       </span>
 
-    </h2>
+    </motion.h2>
 
     {/* DESCRIPTION */}
-    <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-base md:text-lg mb-14">
+    <motion.p
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+      viewport={{ once: true }}
+      className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-base md:text-lg mb-16"
+    >
       Open for freelance projects, collaborations,
       and creative opportunities. Let’s build visuals
       that communicate, inspire, and leave a lasting impact.
-    </p>
+    </motion.p>
 
-    {/* SOCIAL */}
-    <div className="flex justify-center gap-5 flex-wrap mb-16">
+    {/* SOCIAL CARDS */}
+    <div className="flex justify-center gap-5 flex-wrap mb-20">
 
       {[
         {
@@ -864,14 +1659,14 @@ const menus = [
           icon: <FaLinkedin />,
           link: "https://id.linkedin.com/in/suciana-nur-arifandy-983b39206",
           color: "group-hover:text-blue-500",
-          glow: "from-blue-400 to-cyan-400",
+          glow: "from-blue-400 via-cyan-400 to-sky-400",
           label: "LinkedIn",
         },
         {
           icon: <FaTiktok />,
           link: "https://www.tiktok.com/@winsskyt?_r=1&_t=ZS-966glriXRFY",
           color: "group-hover:text-black",
-          glow: "from-gray-300 to-gray-500",
+          glow: "from-gray-300 via-gray-400 to-gray-500",
           label: "TikTok",
         },
       ].map((item, i) => (
@@ -880,31 +1675,108 @@ const menus = [
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.08 }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.08,
+          }}
           viewport={{ once: true }}
           className="group relative"
         >
 
-          <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/70 backdrop-blur-xl px-8 py-6 flex flex-col items-center gap-3 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+          {/* CARD */}
+          <div
+            style={{
+              animationDelay: `${i * 0.4}s`,
+            }}
+            className="
+              relative
+              overflow-hidden
+              rounded-[32px]
+              border
+              border-black/10
+              bg-white/70
+              backdrop-blur-2xl
+              px-8
+              py-7
+              min-w-[140px]
+              flex
+              flex-col
+              items-center
+              gap-4
+              transition-all
+              duration-500
+              hover:-translate-y-3
+              hover:shadow-2xl
+              animate-floatingSlow
+            "
+          >
 
             {/* GLOW */}
             <div
-              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br ${item.glow} blur-3xl`}
+              className={`
+                absolute
+                inset-0
+                opacity-70
+                blur-3xl
+                bg-gradient-to-br
+                ${item.glow}
+                animate-glowMove
+              `}
             />
+
+            {/* GLASS */}
+            <div className="absolute inset-[1px] rounded-[31px] bg-white/80 backdrop-blur-2xl" />
+
+            {/* SHINE */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
+
+              <div className="absolute top-0 left-[-120%] w-[80%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 group-hover:left-[140%] transition-all duration-1000" />
+
+            </div>
 
             {/* ICON */}
             <div
-              className={`relative z-10 text-3xl transition-all duration-500 ${item.color}`}
+              className={`
+                relative
+                z-10
+                text-4xl
+                transition-all
+                duration-500
+                ${item.color}
+                group-hover:scale-125
+                group-hover:rotate-6
+              `}
             >
               {item.icon}
             </div>
 
             {/* TEXT */}
-            <p className="relative z-10 text-sm font-medium">
+            <p className="relative z-10 text-sm font-semibold">
               {item.label}
             </p>
+
+            {/* MINI DOTS */}
+            <div className="relative z-10 flex gap-1">
+
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"
+                style={{
+                  animationDelay: "0.3s",
+                }}
+              />
+
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"
+                style={{
+                  animationDelay: "0.6s",
+                }}
+              />
+
+            </div>
 
           </div>
 
@@ -913,76 +1785,188 @@ const menus = [
 
     </div>
 
-    {/* CTA BUTTON */}
+    {/* CTA */}
     <motion.a
       href="https://wa.me/6281997837794"
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.98 }}
       className="inline-block group relative"
     >
 
-      {/* BUTTON GLOW */}
-      <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 blur-3xl opacity-30 group-hover:opacity-60 transition rounded-full" />
+      {/* GLOW */}
+      <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 blur-3xl opacity-40 group-hover:opacity-70 transition duration-500 rounded-full animate-pulseGradient" />
 
       {/* BUTTON */}
-      <div className="relative px-10 py-5 rounded-full bg-black text-white text-sm md:text-base font-semibold tracking-wide shadow-2xl">
+      <div className="relative overflow-hidden rounded-full bg-black text-white px-10 md:px-14 py-5 text-sm md:text-base font-semibold tracking-wide shadow-2xl">
 
-        Start a Project →
+        {/* SHINE */}
+        <div className="absolute top-0 left-[-120%] w-[80%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-12 group-hover:left-[140%] transition-all duration-1000" />
+
+        <span className="relative z-10 flex items-center gap-3">
+
+          Start a Project
+
+          <span className="group-hover:translate-x-1 transition">
+            →
+          </span>
+
+        </span>
 
       </div>
 
     </motion.a>
 
     {/* FOOT NOTE */}
-    <div className="mt-20">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.4 }}
+      viewport={{ once: true }}
+      className="mt-20"
+    >
 
       <p className="text-sm text-gray-400">
         Available for freelance work & creative collaboration
       </p>
 
-    </div>
+    </motion.div>
 
   </div>
 
 </section>
 
-{/* FOOTER */}
-<footer className="relative py-12 px-5 border-t border-black/5 overflow-hidden">
+{/* 🌙 FOOTER */}
+<footer className="relative py-14 md:py-16 px-5 overflow-hidden border-t border-black/5">
 
-  {/* SOFT GLOW */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[240px] h-[120px] bg-purple-200/20 blur-[80px] rounded-full" />
+  {/* 🌈 AMBIENT BACKGROUND */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+    {/* PURPLE */}
+    <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[280px] h-[140px] bg-purple-300/20 blur-[90px] rounded-full animate-pulseGradient" />
+
+    {/* PINK */}
+    <div
+      className="absolute right-[-80px] bottom-[-80px] w-[220px] h-[220px] bg-pink-300/20 blur-[120px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "2s",
+      }}
+    />
+
+    {/* CYAN */}
+    <div
+      className="absolute left-[-60px] top-[-40px] w-[180px] h-[180px] bg-cyan-200/20 blur-[100px] rounded-full animate-glowFloat"
+      style={{
+        animationDelay: "4s",
+      }}
+    />
+
   </div>
 
-  <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
+  <div className="max-w-6xl mx-auto relative z-10">
 
-    {/* LEFT */}
-    <div className="text-center md:text-left">
+    {/* TOP */}
+    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
 
-      <h3 className="font-semibold tracking-wide">
-        Suciana Nur Arifandy
-      </h3>
+      {/* LEFT */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center md:text-left"
+      >
 
-      <p className="text-sm text-gray-500 mt-1">
-        Visual Designer & Creative Editor
-      </p>
+        <h3 className="text-xl font-black tracking-wide bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+          Suciana Nur Arifandy
+        </h3>
+
+        <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+          Visual Designer & Creative Editor
+        </p>
+
+      </motion.div>
+
+      {/* CENTER */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        viewport={{ once: true }}
+        className="
+          relative
+          overflow-hidden
+          rounded-full
+          border
+          border-black/10
+          bg-white/70
+          backdrop-blur-xl
+          px-6
+          py-3
+          text-xs
+          text-gray-500
+          animate-floatingSlow
+        "
+      >
+
+        {/* GLOW */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-300/20 via-pink-300/20 to-cyan-300/20 blur-2xl opacity-60 animate-pulseGradient" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 flex items-center gap-2">
+
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+
+          <span>
+            © {new Date().getFullYear()} All Rights Reserved
+          </span>
+
+        </div>
+
+      </motion.div>
+
+      {/* RIGHT */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-sm text-gray-500 flex items-center gap-2"
+      >
+
+        <span>
+          Crafted by
+        </span>
+
+        <span className="relative font-semibold">
+
+          {/* GLOW */}
+          <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 blur-lg opacity-30" />
+
+          {/* TEXT */}
+          <span className="relative bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+            nannsky
+          </span>
+
+        </span>
+
+      </motion.div>
 
     </div>
 
-    {/* CENTER */}
-    <div className="text-xs text-gray-400 text-center">
-      © {new Date().getFullYear()} All Rights Reserved
-    </div>
-
-    {/* RIGHT */}
-    <div className="text-sm text-gray-500">
-      Crafted by{" "}
-      <span className="font-medium bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-        nannsky
-      </span>
-    </div>
+    {/* BOTTOM LINE */}
+    <motion.div
+      initial={{ width: 0 }}
+      whileInView={{ width: "100%" }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="h-px bg-gradient-to-r from-transparent via-purple-300/40 to-transparent mt-10"
+    />
 
   </div>
 
